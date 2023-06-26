@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="minimum_touch_target_size">48dp</dimen>
+    <dimen name="minimum_medium_button_height">54dp</dimen>
+
+    <dimen name="titlebar_height">54dp</dimen>
+    <dimen name="title_line_spacing_multiplier">1.2</dimen>
+
+    <dimen name="padding_navigation">56dp</dimen>
+
+    <dimen name="progress_corners_radius_large">100dp</dimen>
+
+    <item format="float" name="md3_ripple_focused_alpha" type="dimen">0.18</item>
+    <item format="float" name="md3_ripple_hovered_alpha" type="dimen">0.25</item>
+    <item format="float" name="md3_ripple_pressed_alpha" type="dimen">0.12</item>
+
+    <dimen name="buttons_largeHeight">55dp</dimen>
+
+    <dimen name="radius_xlarge">16dp</dimen>
+    <dimen name="radius_medium">8dp</dimen>
+</resources>

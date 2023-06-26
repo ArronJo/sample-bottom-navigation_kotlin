@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deepBlue100"
+    app:layout_constraintVertical_chainStyle="spread_inside"
+    tools:ignore="Overdraw">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/transparent"
+        android:paddingBottom="@dimen/padding_navigation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="0dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Label"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    android:labelFor="@+id/ed_top"
+                    tools:ignore="HardcodedText" />
+                <EditText
+                    android:id="@+id/ed_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:inputType="text"
+                    android:text="EditText Component"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textStyle="bold"
+                    android:importantForAutofill="no"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Label"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    android:labelFor="@+id/ed_middle"
+                    tools:ignore="HardcodedText" />
+                <EditText
+                    android:id="@+id/ed_middle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:inputType="text"
+                    android:text="EditText Component"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textStyle="bold"
+                    android:importantForAutofill="no"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="Blah Blah"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Label"
+                    android:textColor="@color/black"
+                    android:background="@color/transparent"
+                    android:labelFor="@+id/ed_bottom"
+                    tools:ignore="HardcodedText" />
+                <EditText
+                    android:id="@+id/ed_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:gravity="start|center_vertical"
+                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:inputType="textMultiLine"
+                    android:text="EditText Component"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textStyle="bold"
+                    android:importantForAutofill="no"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

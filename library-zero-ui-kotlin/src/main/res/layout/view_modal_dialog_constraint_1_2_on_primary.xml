@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:minWidth="320dp"
+    android:padding="24dp"
+    android:background="@drawable/bg_rounded_on_primary_large"
+    app:layout_constraintVertical_chainStyle="spread_inside"
+    tools:ignore="Overdraw">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/messageLayout">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/minimum_touch_target_size"
+            android:gravity="start|center_vertical"
+            android:text="타이틀"
+            android:lineSpacingMultiplier="@dimen/title_line_spacing_multiplier"
+            android:textSize="@dimen/largeFontSizeSP"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/minimum_touch_target_size"
+            android:minHeight="@dimen/minimum_touch_target_size"
+            android:padding="4dp"
+            android:foregroundGravity="top|right"
+            android:src="@drawable/ic_20_x_close"
+            android:background="@color/transparent"
+            android:contentDescription="@string/close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/messageLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="30dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/titleLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
+        app:layout_constraintHorizontal_bias="0.5">
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <!-- 토스 android:textSize="@dimen/smallFontSizeSP" -->
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="start|top"
+                android:text="컨텐츠 내용"
+                android:lineSpacingMultiplier="@dimen/title_line_spacing_multiplier"
+                android:textSize="@dimen/smediumFontSizeSP"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/minimum_medium_button_height"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/messageLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/neutralButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/selector_on_primary_medium"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:stateListAnimator="@null"
+            android:text="@string/cancel"
+            android:textSize="@dimen/mediumFontSizeSP"
+            android:textStyle="normal"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/negativeButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ButtonStyle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/negativeButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/selector_on_primary_medium"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:stateListAnimator="@null"
+            android:text="@string/no"
+            android:textSize="@dimen/mediumFontSizeSP"
+            android:textStyle="normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/neutralButton"
+            app:layout_constraintEnd_toStartOf="@id/positionButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ButtonStyle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/positionButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/selector_orange500_medium"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:stateListAnimator="@null"
+            android:text="@string/yes"
+            android:textColor="@color/white"
+            android:textSize="@dimen/mediumFontSizeSP"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/negativeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ButtonStyle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

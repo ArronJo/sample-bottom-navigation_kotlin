@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="88dp"
+    android:background="@drawable/bg_bottom_line_transparent">
+
+    <LinearLayout
+        android:id="@+id/item_1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="@dimen/minimum_touch_target_size"
+            android:layout_height="@dimen/minimum_touch_target_size"
+            android:background="@drawable/bg_rounded_white_medium"
+            android:contentDescription="application icon"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingHorizontal="12dp"
+            android:background="@color/transparent"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/app_package_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="14sp"
+                android:textColor="@color/gray900"
+                android:singleLine="false"
+                android:ellipsize="end"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/remove"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:minWidth="@dimen/minimum_touch_target_size"
+            android:padding="8dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical|end"
+            android:background="@drawable/selector_white_medium"
+            android:stateListAnimator="@null"
+            android:text="@string/delete"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText,UnusedAttribute" />
+    </LinearLayout>
+
+</RelativeLayout>

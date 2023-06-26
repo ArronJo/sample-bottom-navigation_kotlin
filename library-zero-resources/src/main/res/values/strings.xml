@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="msg_one_more_press_back_button">Press the back button once more to exit the app.</string>
+
+    <string name="msg_please_allow_all_required_permissions">Please allow all required permissions.</string>
+
+    <string name="msg_the_certificate_is_not_yet_valid">The certificate is not yet valid.</string>
+    <string name="msg_the_certificate_has_expired">The certificate has expired.</string>
+    <string name="msg_hostname_mismatch">Hostname mismatch.</string>
+    <string name="msg_the_certificate_authority_is_not_trusted">The certificate authority is not trusted.</string>
+    <string name="msg_certificate_date_is_invalid">Certificate date is invalid.</string>
+    <string name="msg_a_generic_error_occurred">A generic error occurred.</string>
+
+    <string name="msg_do_you_want_to_continue">Do you want to continue?</string>
+
+    <string name="loading" tools:ignore="TypographyEllipsis">loading...</string>
+
+    <string name="middot">\u00B7</string>
+    <string name="bullet">\u2022</string>
+
+    <string name="ok">OK</string>
+
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="cancel" tools:ignore="ButtonCase">cancel</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="delete">delete</string>
+
+    <string name="icon">icon</string>
+    <string name="settings">settings</string>
+
+    <string name="notice">notice</string>
+
+    <string name="web">web</string>
+
+</resources>

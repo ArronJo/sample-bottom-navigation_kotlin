@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_my_contract"
+        android:contentDescription="@string/my_contract"
+        android:icon="@drawable/ic_nav_my_contract"
+        android:title="@string/my_contract" />
+    <item
+        android:id="@+id/menu_find_product"
+        android:contentDescription="@string/find_product"
+        android:icon="@drawable/ic_nav_find_product"
+        android:title="@string/find_product" />
+    <item
+        android:id="@+id/menu_full_menu"
+        android:contentDescription="@string/full_menu"
+        android:icon="@drawable/ic_nav_full_menu"
+        android:title="@string/full_menu" />
+</menu>

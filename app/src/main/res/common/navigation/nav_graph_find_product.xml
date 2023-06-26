@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_find_product"
+    app:startDestination="@+id/findProductFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:id="@+id/findProductFragment"
+        android:name="com.hanwhalife.ui.activity.nav.fragment.findproduct.FindProductFragment"
+        android:label="@string/find_product"
+        tools:layout="@layout/fragment_nav_find_product">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="hanwhalife.com/findProduct" />
+    </fragment>
+</navigation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="microFontSizeSP">12sp</dimen>
+    <dimen name="smallFontSizeSP">14sp</dimen>
+    <dimen name="smediumFontSizeSP">15sp</dimen>
+    <dimen name="mediumFontSizeSP">16sp</dimen>
+    <dimen name="slargeFontSizeSP">18sp</dimen>
+    <dimen name="largeFontSizeSP">20sp</dimen>
+    <dimen name="xlargeFontSizeSP">22sp</dimen>
+</resources>

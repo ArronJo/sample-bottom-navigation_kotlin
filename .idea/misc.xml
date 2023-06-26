@@ -1,0 +1,23 @@
+<project version="4">
+  <component name="EntryPointsManager">
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setCancelable" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setContentView" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setDimAmount" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setMessage" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setNegativeButton" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setTitle" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setView" />
+    <pattern value="com.snc.zero.ui.kotlin.dialog.ModalBuilder" method="setXButton" />
+    <pattern value="com.snc.zero.lib.kotlin.permission.RPermission" method="setPermissions" />
+    <pattern value="com.snc.zero.lib.kotlin.permission.RPermission" method="setRationalMessage" />
+    <pattern value="com.snc.zero.lib.kotlin.permission.RPermission" method="setRationalTitle" />
+    <pattern value="com.snc.zero.lib.kotlin.permission.RPermission.Companion" method="isGranted" />
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
