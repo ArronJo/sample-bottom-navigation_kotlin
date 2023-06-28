@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hanwhalife.ui.activity.adapter.PackageInfoAdapter
+import com.hanwhalife.ui.activity.nav.NavActivity
 import com.hanwhalife.ui.activity.nav.bizconst.BizConst
 import com.hanwhalife.ui.activity.nav.fragment.base.BaseNavFragment
 import com.snc.sample.bottom_navigation_kotlin.R
@@ -94,6 +95,12 @@ class FullMenuFragment : BaseNavFragment(R.layout.fragment_nav_full_menu) {
     }
 
     private fun goToBizAppWeb() {
+        activity?.apply {
+            if (this is NavActivity) {
+                hideBottomNav()
+            }
+        }
+
         findNavController().navigateWithDefaultAnimation(
             R.id.bizWebFragment,
             bundleOf(BizConst.ARGUMENT_KEY_URL to "https://google.com"),

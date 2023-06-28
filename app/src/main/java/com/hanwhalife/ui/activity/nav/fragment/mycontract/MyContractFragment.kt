@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.AppCompatButton
+import com.hanwhalife.ui.activity.nav.NavActivity
 import com.hanwhalife.ui.activity.nav.bizconst.BizConst
 import com.hanwhalife.ui.activity.nav.fragment.base.BaseNavFragment
 import com.snc.sample.bottom_navigation_kotlin.R
@@ -91,6 +93,21 @@ class MyContractFragment : BaseNavFragment(R.layout.fragment_nav_my_contract) {
             text1?.text = "blah blah (optional)"
             val text2 = it.findViewById<TextView>(R.id.text2)
             text2?.text = "blah blah blah blah blah blah"
+        }
+
+        val positiveButton = view.findViewById<AppCompatButton>(R.id.positiveButton)
+        positiveButton?.let {
+            it.setOnClickListener {
+                activity?.apply {
+                    if (this is NavActivity) {
+                        if (isShowingBottomNav()) {
+                            hideBottomNav()
+                        } else {
+                            showBottomNav()
+                        }
+                    }
+                }
+            }
         }
     }
 }

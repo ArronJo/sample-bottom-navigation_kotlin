@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -12,7 +14,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hanwhalife.consts.AppConfig
 import com.hanwhalife.ui.activity.base.BaseAppCompatActivity
 import com.snc.sample.bottom_navigation_kotlin.R
-import com.snc.zero.ui.kotlin.extentions.setOnApplyWindowInsets
+import com.snc.zero.ui.kotlin.extentions.getImeHeight
+import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
+import com.snc.zero.ui.kotlin.extentions.getNavigationBarImeHeight
+import com.snc.zero.ui.kotlin.extentions.postDelayed
 import timber.log.Timber
 
 class NavActivity : BaseAppCompatActivity() {
@@ -33,9 +38,52 @@ class NavActivity : BaseAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav)
 
+        if (AppConfig.FEATURE_FULLSCREEN) {
+            setupFullScreen()
+        }
+
         setupNavHost()
-        setupSpinnerDialog()
         setupOnBackPressedDispatcher()
+    }
+
+    private fun setupFullScreen() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        val contentView = findViewById<ViewGroup>(R.id.fitLayout)
+        contentView?.let {
+            val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
+            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                if (insets.getImeHeight() > 0) {
+                    hideBottomNav()
+                    val paddingBottom = insets.getNavigationBarImeHeight()
+                    Timber.i("NavHostContainer::setPadding + Ime(${v.paddingLeft}, ${v.paddingTop}, ${v.paddingRight}, ${paddingBottom})")
+                    navHostContainer.setPadding(
+                        v.paddingLeft,
+                        v.paddingTop,
+                        v.paddingRight,
+                        paddingBottom
+                    )
+                } else {
+                    if (R.id.splashFragment != navController.currentDestination?.id) {
+                        showBottomNav()
+                    }
+                    val navigationBarHeight = resources.getNavigationBarHeight()
+                    val bottomNavView = findViewById<ViewGroup>(R.id.bottom_nav)
+                    var paddingBottom = 0
+                    if (0 == navigationBarHeight) {
+                        paddingBottom = bottomNavView.height
+                    }
+                    Timber.i("NavHostContainer::setPadding(${v.paddingLeft}, ${v.paddingTop}, ${v.paddingRight}, ${v.paddingBottom})")
+                    navHostContainer?.setPadding(
+                        v.paddingLeft,
+                        v.paddingTop,
+                        v.paddingRight,
+                        paddingBottom + navigationBarHeight
+                    )
+                }
+                return@setOnApplyWindowInsetsListener insets
+            }
+        }
     }
 
     private fun setupNavHost() {
@@ -61,12 +109,14 @@ class NavActivity : BaseAppCompatActivity() {
                 R.id.myContractFragment, R.id.findProductFragment -> {
                     showBottomNav()
                 }
+
                 R.id.fullMenuFragment -> {
                     badge.isVisible = false
                     badge.clearNumber()
 
                     showBottomNav()
                 }
+
                 else -> {
                     hideBottomNav()
                 }
@@ -76,11 +126,6 @@ class NavActivity : BaseAppCompatActivity() {
                 Timber.d("currentBackStackEntry : ${controller.currentBackStackEntry?.destination?.displayName}")
             }
         }
-    }
-
-    private fun setupSpinnerDialog() {
-        val spinnerDialog = findViewById<ViewGroup>(R.id.view_loading)
-        spinnerDialog?.setOnApplyWindowInsets()
     }
 
     private fun setupOnBackPressedDispatcher() {
@@ -115,17 +160,48 @@ class NavActivity : BaseAppCompatActivity() {
                     finish()
                 }
             }
+
             R.id.splashFragment -> {
                 return
             }
         }
     }
 
-    private fun showBottomNav() {
+    fun showBottomNav() {
         bottomNavigationView.visibility = View.VISIBLE
+
+        postDelayed({
+            val navigationBarHeight = resources.getNavigationBarHeight()
+            val bottomNavView = findViewById<ViewGroup>(R.id.bottom_nav)
+            var paddingBottom = 0
+            if (0 == navigationBarHeight) {
+                paddingBottom = bottomNavView.height
+            }
+
+            val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
+            navHostContainer.setPadding(
+                navHostContainer.paddingLeft,
+                navHostContainer.paddingTop,
+                navHostContainer.paddingRight,
+                paddingBottom + navigationBarHeight
+            )
+        }, 0)
     }
 
-    private fun hideBottomNav() {
+    fun hideBottomNav() {
         bottomNavigationView.visibility = View.GONE
+
+        val navigationBarHeight = resources.getNavigationBarHeight()
+        val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
+        navHostContainer?.setPadding(
+            navHostContainer.paddingLeft,
+            navHostContainer.paddingTop,
+            navHostContainer.paddingRight,
+            navigationBarHeight
+        )
+    }
+
+    fun isShowingBottomNav(): Boolean {
+        return View.VISIBLE == bottomNavigationView.visibility
     }
 }

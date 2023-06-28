@@ -11,8 +11,8 @@ android {
         applicationId "com.snc.sample.bottom_navigation_kotlin"
         minSdk rootProject.minSdkVersion
         targetSdk rootProject.targetSdkVersion
-        versionCode 10010001
-        versionName "1.1.1"
+        versionCode 10010002
+        versionName "1.1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

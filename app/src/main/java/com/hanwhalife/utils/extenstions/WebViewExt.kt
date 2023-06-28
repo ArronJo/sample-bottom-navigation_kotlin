@@ -25,8 +25,7 @@ import com.snc.zero.lib.kotlin.permission.RPermissionListener
 import com.snc.zero.lib.kotlin.util.IntentSettings
 import com.snc.zero.ui.kotlin.dialog.ModalBuilder
 import com.snc.zero.ui.kotlin.extentions.setProgressWithAnim
-import com.snc.zero.ui.kotlin.extentions.startAnimLoop
-import com.snc.zero.ui.kotlin.extentions.stopAnimLoop
+import com.snc.zero.ui.kotlin.util.ProgressBarUtil
 import timber.log.Timber
 
 private val gHandler = Handler(Looper.getMainLooper())
@@ -109,7 +108,7 @@ fun WebView.setup(
                 //it.setProgressWithUnit(100)
 
                 gHandler.postDelayed({
-                    it.stopAnimLoop()
+                    ProgressBarUtil.stopAnimLoop()
                     it.visibility = View.GONE
                 }, 500)
             }
@@ -125,7 +124,8 @@ fun WebView.setup(
         override fun onProgressChanged(view: WebView, newProgress: Int) {
             progressBar?.let {
                 if (newProgress >= 70) {
-                    it.startAnimLoop(duration = 1800,
+                    ProgressBarUtil.startAnimLoop(it,
+                        duration = 1800,
                         repeatCount = 0,
                         listener = { state ->
                             if ("end" == state) {

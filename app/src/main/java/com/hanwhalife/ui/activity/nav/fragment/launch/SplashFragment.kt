@@ -45,8 +45,9 @@ class SplashFragment : BaseFragment(R.layout.fragment_nav_splash) {
 
     private fun goToNext() {
         findNavController().navigateWithDefaultAnimation(
+            R.id.menu_my_contract,
             //R.id.menu_find_product,
-            R.id.menu_full_menu,
+            //R.id.menu_full_menu,
             bundleOf("arg1" to "1"),
             NavOptions.Builder()
         )

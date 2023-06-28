@@ -6,8 +6,6 @@
     <dimen name="titlebar_height">54dp</dimen>
     <dimen name="title_line_spacing_multiplier">1.2</dimen>
 
-    <dimen name="padding_navigation">56dp</dimen>
-
     <dimen name="progress_corners_radius_large">100dp</dimen>
 
     <item format="float" name="md3_ripple_focused_alpha" type="dimen">0.18</item>
