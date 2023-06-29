@@ -11,13 +11,13 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 import timber.log.Timber
 
-class RPermission(private val context: Context) {
+class RPermission(private val activity: Activity) {
 
     companion object {
 
         @JvmStatic
-        fun with(context: Context): RPermission {
-            return RPermission(context)
+        fun with(activity: Activity): RPermission {
+            return RPermission(activity)
         }
 
         @JvmStatic
@@ -50,7 +50,7 @@ class RPermission(private val context: Context) {
     }
 
     fun setRationalTitle(resId: Int): RPermission {
-        rationalTitle = getString(context, resId)
+        rationalTitle = getString(activity, resId)
         return this
     }
 
@@ -60,7 +60,7 @@ class RPermission(private val context: Context) {
     }
 
     fun setRationalMessage(resId: Int): RPermission {
-        rationalMessage = getString(context, resId)
+        rationalMessage = getString(activity, resId)
         return this
     }
 
@@ -116,11 +116,7 @@ class RPermission(private val context: Context) {
             return false
         }
         for (permission in needPermissions) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(
-                    (context as Activity?)!!,
-                    permission
-                )
-            ) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
                 return false
             }
         }

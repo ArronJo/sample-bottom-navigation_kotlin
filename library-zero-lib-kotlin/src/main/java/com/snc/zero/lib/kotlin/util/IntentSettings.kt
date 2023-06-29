@@ -12,7 +12,7 @@ class IntentSettings {
         @JvmStatic
         fun manageAppSettings(
             context: Context,
-            packageName: String,
+            packageName: String = context.packageName,
         ) {
             val intent = Intent(
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS,

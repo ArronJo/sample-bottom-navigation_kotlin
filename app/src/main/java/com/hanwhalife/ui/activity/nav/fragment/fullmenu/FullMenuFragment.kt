@@ -15,10 +15,10 @@ import com.hanwhalife.ui.activity.nav.NavActivity
 import com.hanwhalife.ui.activity.nav.bizconst.BizConst
 import com.hanwhalife.ui.activity.nav.fragment.base.BaseNavFragment
 import com.snc.sample.bottom_navigation_kotlin.R
-import com.snc.zero.lib.kotlin.util.IntentSettings
 import com.snc.zero.lib.kotlin.util.PackageUtil
 import com.snc.zero.ui.kotlin.extentions.navigateWithDefaultAnimation
 import com.snc.zero.ui.kotlin.extentions.postDelayed
+import com.snc.zero.ui.kotlin.util.IntentUtil
 import timber.log.Timber
 
 class FullMenuFragment : BaseNavFragment(R.layout.fragment_nav_full_menu) {
@@ -66,7 +66,7 @@ class FullMenuFragment : BaseNavFragment(R.layout.fragment_nav_full_menu) {
                     override fun onRemoveClicked(position: Int) {
                         adapter?.getItems()?.let { item ->
                             context?.let { context ->
-                                IntentSettings.manageAppSettings(
+                                IntentUtil.showGotoSettingsDialog(
                                     context,
                                     item[position].packageName
                                 )

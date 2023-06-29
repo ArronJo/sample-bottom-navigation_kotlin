@@ -64,9 +64,16 @@ class NavActivity : BaseAppCompatActivity() {
                         paddingBottom
                     )
                 } else {
-                    if (R.id.splashFragment != navController.currentDestination?.id) {
-                        showBottomNav()
+                    val destinationId = navController.currentDestination?.id
+                    if (R.id.menu_my_contract != destinationId
+                        && R.id.menu_find_product != destinationId
+                        && R.id.menu_full_menu != destinationId
+                    ) {
+                        return@setOnApplyWindowInsetsListener insets
                     }
+
+                    showBottomNav()
+
                     val navigationBarHeight = resources.getNavigationBarHeight()
                     val bottomNavView = findViewById<ViewGroup>(R.id.bottom_nav)
                     var paddingBottom = 0
@@ -168,6 +175,7 @@ class NavActivity : BaseAppCompatActivity() {
     }
 
     fun showBottomNav() {
+        Timber.i("showBottomNav()")
         bottomNavigationView.visibility = View.VISIBLE
 
         postDelayed({
@@ -185,10 +193,11 @@ class NavActivity : BaseAppCompatActivity() {
                 navHostContainer.paddingRight,
                 paddingBottom + navigationBarHeight
             )
-        }, 0)
+        }, 100)
     }
 
     fun hideBottomNav() {
+        Timber.i("hideBottomNav()")
         bottomNavigationView.visibility = View.GONE
 
         val navigationBarHeight = resources.getNavigationBarHeight()

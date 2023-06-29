@@ -2,7 +2,7 @@ package com.hanwhalife.utils.extenstions
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.DialogInterface
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -14,6 +14,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.ProgressBar
 import com.hanwhalife.consts.AppConfig
+import com.hanwhalife.ui.activity.webview.chooser.listener.FileChooserListener
 import com.hanwhalife.ui.activity.webview.client.BizAppWebChromeClient
 import com.hanwhalife.ui.activity.webview.client.BizWebViewClient
 import com.hanwhalife.ui.activity.webview.client.OnLifeCycleListener
@@ -22,9 +23,8 @@ import com.snc.sample.bottom_navigation_kotlin.BuildConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.zero.lib.kotlin.permission.RPermission
 import com.snc.zero.lib.kotlin.permission.RPermissionListener
-import com.snc.zero.lib.kotlin.util.IntentSettings
-import com.snc.zero.ui.kotlin.dialog.ModalBuilder
 import com.snc.zero.ui.kotlin.extentions.setProgressWithAnim
+import com.snc.zero.ui.kotlin.util.IntentUtil
 import com.snc.zero.ui.kotlin.util.ProgressBarUtil
 import timber.log.Timber
 
@@ -32,8 +32,10 @@ private val gHandler = Handler(Looper.getMainLooper())
 
 @SuppressLint("SetJavaScriptEnabled", "JavascriptInterface")
 fun WebView.setup(
+    activity: Activity,
     bizWebViewClient: BizWebViewClient? = null,
     bizWebChromeClient: BizAppWebChromeClient? = null,
+    fileChooserListener: FileChooserListener? = null,
     listener: OnLifeCycleListener? = null,
     progressBar: ProgressBar? = null
 ) {
@@ -117,7 +119,7 @@ fun WebView.setup(
         }
     })
 
-    webChromeClient = bizWebChromeClient ?: BizAppWebChromeClient(this, object : OnLifeCycleListener {
+    val chromeClient = bizWebChromeClient ?: BizAppWebChromeClient(activity, this, object : OnLifeCycleListener {
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
         }
 
@@ -147,6 +149,8 @@ fun WebView.setup(
         override fun onPageFinished(view: WebView, url: String?) {
         }
     })
+    chromeClient.fileChooserListener = fileChooserListener
+    webChromeClient = chromeClient
 
     setDownloadListener(BizDownloadListener(context))
 }
@@ -163,7 +167,7 @@ const val SCHEME_ASSET_API30 = SCHEME_HTTPS + AppConfig.ASSET_BASE_DOMAIN + AppC
 //const val SCHEME_RES = "file:///android_res"
 //const val SCHEME_RES_API30 = SCHEME_HTTPS + BuildConfig.ASSET_BASE_DOMAIN + BuildConfig.RES_PATH
 
-fun WebView.loadUrlWithHeader(uriString: String, headers: Map<String, String>? = null) {
+fun WebView.loadUrlWithHeader(activity: Activity, uriString: String, headers: Map<String, String>? = null) {
     val extraHeaders = HashMap<String, String>()
     headers?.let {
         for ((key, value) in headers) {
@@ -185,7 +189,7 @@ fun WebView.loadUrlWithHeader(uriString: String, headers: Map<String, String>? =
             permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
 
-        RPermission.with(context)
+        RPermission.with(activity)
             .setPermissions(permissions)
             .setPermissionListener(object : RPermissionListener {
                 override fun onPermissionGranted(grantPermissions: List<String>) {
@@ -194,35 +198,15 @@ fun WebView.loadUrlWithHeader(uriString: String, headers: Map<String, String>? =
                 }
 
                 override fun onPermissionDenied(deniedPermissions: List<String>) {
-                    Timber.e("[WEBVIEW] onPermissionDenied()...$deniedPermissions")
+                    Timber.w("[WEBVIEW] onPermissionDenied()...$deniedPermissions")
 
-                    ModalBuilder.with(context)?.apply {
-                            this.setTitle(com.snc.zero.resources.R.string.notice)
-                            this.setMessage("${context.resources.getString(com.snc.zero.resources.R.string.msg_please_allow_all_required_permissions)}\n$deniedPermissions")
-                            this.setPositiveButton(com.snc.zero.resources.R.string.settings) { _: DialogInterface?, _: Int ->
-                                IntentSettings.manageAppSettings(
-                                    context,
-                                    context.packageName
-                                )
-                            }
-                            .show()
-                        }
+                    IntentUtil.showGotoSettingsDialog(context, context.packageName, deniedPermissions)
                 }
 
                 override fun onPermissionRationaleShouldBeShown(deniedPermissions: List<String>) {
-                    Timber.e("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
+                    Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
 
-                    ModalBuilder.with(context)?.apply {
-                        this.setTitle(com.snc.zero.resources.R.string.notice)
-                        this.setMessage("${context.resources.getString(com.snc.zero.resources.R.string.msg_please_allow_all_required_permissions)}\n$deniedPermissions")
-                        this.setPositiveButton(com.snc.zero.resources.R.string.settings) { _: DialogInterface?, _: Int ->
-                            IntentSettings.manageAppSettings(
-                                context,
-                                context.packageName
-                            )
-                        }
-                        .show()
-                    }
+                    IntentUtil.showGotoSettingsDialog(context, context.packageName, deniedPermissions)
                 }
             })
             .check()
