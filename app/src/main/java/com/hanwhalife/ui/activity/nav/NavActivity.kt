@@ -65,9 +65,9 @@ class NavActivity : BaseAppCompatActivity() {
                     )
                 } else {
                     val destinationId = navController.currentDestination?.id
-                    if (R.id.menu_my_contract != destinationId
-                        && R.id.menu_find_product != destinationId
-                        && R.id.menu_full_menu != destinationId
+                    if (R.id.myContractFragment != destinationId
+                        && R.id.findProductFragment != destinationId
+                        && R.id.fullMenuFragment != destinationId
                     ) {
                         return@setOnApplyWindowInsetsListener insets
                     }
