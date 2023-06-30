@@ -1,5 +1,6 @@
 package com.hanwhalife.ui.activity.nav.fragment.fullmenu
 
+import android.app.Activity
 import android.content.pm.PackageInfo
 import android.os.Bundle
 import android.view.View
@@ -66,10 +67,12 @@ class FullMenuFragment : BaseNavFragment(R.layout.fragment_nav_full_menu) {
                     override fun onRemoveClicked(position: Int) {
                         adapter?.getItems()?.let { item ->
                             context?.let { context ->
-                                IntentUtil.showGotoSettingsDialog(
-                                    context,
-                                    item[position].packageName
-                                )
+                                if (context is Activity) {
+                                    IntentUtil.showGotoSettingsDialog(
+                                        context,
+                                        item[position].packageName
+                                    )
+                                }
                             }
                         }
                     }

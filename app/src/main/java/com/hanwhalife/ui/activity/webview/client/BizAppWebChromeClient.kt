@@ -220,7 +220,7 @@ class BizAppWebChromeClient(
         message: String,
         result: JsResult
     ): Boolean {
-        ModalBuilder.with(view.context as Activity)
+        ModalBuilder.with(activity)
             .setTitle(com.snc.zero.resources.R.string.web)
             .setMessage(message)
             .setPositiveButton(com.snc.zero.resources.R.string.ok) { _, _ -> result.confirm() }
@@ -234,7 +234,7 @@ class BizAppWebChromeClient(
         message: String,
         result: JsResult
     ): Boolean {
-        ModalBuilder.with(view.context as Activity)
+        ModalBuilder.with(activity)
             .setTitle(com.snc.zero.resources.R.string.web)
             .setMessage(message)
             .setPositiveButton(com.snc.zero.resources.R.string.yes) { _, _ -> result.confirm() }

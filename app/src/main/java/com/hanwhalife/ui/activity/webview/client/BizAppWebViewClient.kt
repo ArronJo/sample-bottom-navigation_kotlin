@@ -21,6 +21,7 @@ import com.snc.zero.ui.kotlin.dialog.ModalBuilder
 import timber.log.Timber
 
 class BizWebViewClient(
+    private val activity: Activity,
     webView: WebView,
     private val listener: OnLifeCycleListener? = null
 ) : WebViewClientCompat() {
@@ -154,7 +155,7 @@ class BizWebViewClient(
             else -> view.context.resources.getString(com.snc.zero.resources.R.string.msg_a_generic_error_occurred)
         }
 
-        ModalBuilder.with(view.context as Activity)
+        ModalBuilder.with(activity)
             .setTitle(com.snc.zero.resources.R.string.notice)
             .setMessage("$msg\n${view.context.resources.getString(com.snc.zero.resources.R.string.msg_do_you_want_to_continue)}")
             .setPositiveButton(com.snc.zero.resources.R.string.yes) { _, _ -> handler.proceed() }
