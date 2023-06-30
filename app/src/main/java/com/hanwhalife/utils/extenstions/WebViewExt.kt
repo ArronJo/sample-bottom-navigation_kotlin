@@ -85,6 +85,8 @@ fun WebView.setup(
         setNeedInitialFocus(true)
 
         userAgentString = makeUserAgent()
+
+        clearCacheWithDB()
     }
 
     progressBar?.let {
@@ -96,7 +98,7 @@ fun WebView.setup(
         //it.setProgressWithUnit(0)
     }
 
-    webViewClient = bizWebViewClient ?: BizWebViewClient(this, object : OnLifeCycleListener {
+    webViewClient = bizWebViewClient ?: BizWebViewClient(activity, this, object : OnLifeCycleListener {
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
             listener?.onPageStarted(view, url, favicon)
         }
@@ -155,6 +157,29 @@ fun WebView.setup(
     setDownloadListener(BizDownloadListener(context))
 }
 
+fun WebView.clearCacheWithDB() {
+    deleteDatabaseFile("webview.db")
+    deleteDatabaseFile("webviewCache.db")
+    try {
+        clearCache(true)
+    } catch (e: Exception) {
+        Timber.e(e)
+    }
+}
+
+fun WebView.deleteDatabaseFile(dbName: String) {
+    try {
+        val dbFile = context.getDatabasePath(dbName)
+        if (null != dbFile && dbFile.exists()) {
+            if (!context.deleteDatabase(dbName)) {
+                Timber.e("##### $dbName :An error occurred while deleting the file. Failed to delete file. !!!")
+            }
+        }
+    } catch (e: Exception) {
+        Timber.e(e)
+    }
+}
+
 const val SCHEME_HTTP = "http://"
 const val SCHEME_HTTPS = "https://"
 const val SCHEME_FILE = "file://"
@@ -200,13 +225,13 @@ fun WebView.loadUrlWithHeader(activity: Activity, uriString: String, headers: Ma
                 override fun onPermissionDenied(deniedPermissions: List<String>) {
                     Timber.w("[WEBVIEW] onPermissionDenied()...$deniedPermissions")
 
-                    IntentUtil.showGotoSettingsDialog(context, context.packageName, deniedPermissions)
+                    IntentUtil.showGotoSettingsDialog(activity = activity, msg = deniedPermissions)
                 }
 
                 override fun onPermissionRationaleShouldBeShown(deniedPermissions: List<String>) {
                     Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
 
-                    IntentUtil.showGotoSettingsDialog(context, context.packageName, deniedPermissions)
+                    IntentUtil.showGotoSettingsDialog(activity = activity, msg = deniedPermissions)
                 }
             })
             .check()
