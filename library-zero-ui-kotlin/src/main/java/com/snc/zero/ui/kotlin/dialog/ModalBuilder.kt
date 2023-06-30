@@ -4,7 +4,6 @@ package com.snc.zero.ui.kotlin.dialog
 
 import android.app.Activity
 import android.app.Dialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Spannable
@@ -26,14 +25,6 @@ class ModalBuilder(private val activity: Activity) {
         @JvmStatic
         fun with(activity: Activity): ModalBuilder {
             return ModalBuilder(activity)
-        }
-
-        @JvmStatic
-        fun with(context: Context): ModalBuilder? {
-            if (context is Activity) {
-                return ModalBuilder(context)
-            }
-            return null
         }
     }
 
