@@ -1,0 +1,182 @@
+package com.snc.ui.activity.webview.chooser
+
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.provider.MediaStore
+import android.text.TextUtils
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
+import com.snc.zero.lib.kotlin.extentions.getMediaDir
+import com.snc.zero.lib.kotlin.util.DateTimeFormat
+import com.snc.zero.lib.kotlin.util.UriUtil
+import timber.log.Timber
+import java.io.File
+import java.util.Date
+
+class BizFileChooserListener(private val fileChooserActivityResultLauncher: ActivityResultLauncher<Intent>) : FileChooserListener {
+
+    private var filePathCallbackLollipop: ValueCallback<Array<Uri>>? = null
+    private var mediaURIs: Array<Uri?>? = null
+
+    companion object {
+        private const val ALL_TYPE = "image/*|audio/*|video/*"
+
+        private const val IMAGE_TYPE = 0
+        private const val AUDIO_TYPE = 1
+        private const val VIDEO_TYPE = 2
+    }
+
+    override fun onOpenFileChooser(
+        webView: WebView,
+        filePathCallback: ValueCallback<Array<Uri>>,
+        acceptTypes: Array<String>
+    ) {
+        Timber.i("FileChooser::onOpenFileChooser")
+
+        this.filePathCallbackLollipop = filePathCallback
+
+        var acceptType = ""
+        for (type in acceptTypes) {
+            if (TextUtils.isEmpty(type)) {
+                continue
+            }
+            if (!type.startsWith("image/")
+                && !type.startsWith("audio/")
+                && !type.startsWith("video/")
+                && !type.startsWith("application/")
+            ) {
+                continue
+            }
+            acceptType += if (TextUtils.isEmpty(acceptType)) {
+                type
+            } else {
+                ",$type"
+            }
+        }
+
+        var type = acceptType
+        if (type.isEmpty() || "*/*".equals(type, ignoreCase = true)) {
+            type = ALL_TYPE
+        }
+        try {
+            mediaURIs = arrayOfNulls(3)
+
+            val intentList: MutableList<Intent> = ArrayList()
+            val fileName: String = DateTimeFormat.format(Date(), "yyyyMMdd_HHmmss")
+
+            if (type.contains("image/")) {
+                mediaURIs?.let {
+                    it[IMAGE_TYPE] = UriUtil.fromFile(
+                        webView.context, File(
+                            webView.context.getMediaDir("image"),
+                            "$fileName.jpg"
+                        )
+                    )
+
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[IMAGE_TYPE])
+                    intentList.add(intent)
+                }
+            }
+            if (type.contains("audio/")) {
+                mediaURIs?.let {
+                    it[AUDIO_TYPE] = UriUtil.fromFile(
+                        webView.context, File(
+                            webView.context.getMediaDir("audio"),
+                            "$fileName.m4a"
+                        )
+                    )
+
+                    val intent = Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[AUDIO_TYPE])
+                    intentList.add(intent)
+                }
+            }
+            if (type.contains("video/")) {
+                mediaURIs?.let {
+                    it[VIDEO_TYPE] = UriUtil.fromFile(
+                        webView.context, File(
+                            webView.context.getMediaDir("video"),
+                            "$fileName.mp4"
+                        )
+                    )
+                    val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[VIDEO_TYPE])
+                    intentList.add(intent)
+                }
+            }
+
+            // Intent Chooser
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            if (ALL_TYPE == type) {
+                intent.type = "*/*"
+            } else {
+                intent.type = type
+            }
+            val chooserIntent = Intent.createChooser(intent, "Chooser")
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentList.toTypedArray())
+            //++
+            fileChooserActivityResultLauncher.launch(chooserIntent)
+            //||
+            //(webView.context as Activity).startActivityForResult(
+            //    chooserIntent,
+            //    RequestCode.REQUEST_FILE_CHOOSER_LOLLIPOP
+            //)
+            //--
+        } catch (e: Exception) {
+            Timber.e(e)
+        }
+    }
+
+    override fun onActivityResultFileChooser(result: ActivityResult) {
+        Timber.i("FileChooser::onActivityResultFileChoose: resultCode[${result.resultCode}] data[${result.data}]")
+
+        if (null == filePathCallbackLollipop) {
+            Timber.i("[WEBVIEW] onActivityResultLollipop(): filePathCallbackLollipop is null !!!")
+            return
+        }
+
+        if (Activity.RESULT_OK != result.resultCode) {
+            filePathCallbackLollipop!!.onReceiveValue(null)
+            filePathCallbackLollipop = null
+            return
+        }
+
+        try {
+            if (null != result.data) {
+                filePathCallbackLollipop?.onReceiveValue(
+                    WebChromeClient.FileChooserParams.parseResult(
+                        result.resultCode,
+                        result.data
+                    )
+                )
+            } else {
+                val results: MutableList<Uri> = java.util.ArrayList()
+                mediaURIs?.let {
+                    it[IMAGE_TYPE]?.let { iit ->
+                        results.add(iit)
+                    }
+                    it[AUDIO_TYPE]?.let { iit ->
+                        results.add(iit)
+                    }
+                    it[VIDEO_TYPE]?.let { iit ->
+                        results.add(iit)
+                    }
+                }
+                filePathCallbackLollipop?.onReceiveValue(results.toTypedArray())
+            }
+        } catch (e: java.lang.Exception) {
+            Timber.e(e)
+        } finally {
+            filePathCallbackLollipop = null
+            mediaURIs = null
+        }
+    }
+
+}

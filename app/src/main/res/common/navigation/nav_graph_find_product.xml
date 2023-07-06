@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/findProductFragment"
-        android:name="com.hanwhalife.ui.activity.nav.fragment.findproduct.FindProductFragment"
+        android:name="com.snc.ui.activity.nav.fragment.findproduct.FindProductFragment"
         android:label="@string/find_product"
         tools:layout="@layout/fragment_nav_find_product">
         <deepLink

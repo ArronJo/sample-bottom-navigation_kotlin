@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fullMenuFragment"
-        android:name="com.hanwhalife.ui.activity.nav.fragment.fullmenu.FullMenuFragment"
+        android:name="com.snc.ui.activity.nav.fragment.fullmenu.FullMenuFragment"
         android:label="@string/full_menu"
         tools:layout="@layout/fragment_nav_full_menu">
         <deepLink

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorOnPrimary"
-        tools:context="com.hanwhalife.activity.nav.NavActivity">
+        tools:context="com.snc.activity.nav.NavActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fitLayout"

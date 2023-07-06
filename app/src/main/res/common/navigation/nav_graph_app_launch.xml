@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.hanwhalife.ui.activity.nav.fragment.launch.SplashFragment"
+        android:name="com.snc.ui.activity.nav.fragment.launch.SplashFragment"
         android:label="@string/app_splash"
         tools:layout="@layout/fragment_nav_splash">
         <deepLink
