@@ -59,9 +59,8 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
             }
         }
 
-        var type = acceptType
-        if (type.isEmpty() || "*/*".equals(type, ignoreCase = true)) {
-            type = ALL_TYPE
+        if (acceptType.isEmpty() || "*/*".equals(acceptType, ignoreCase = true)) {
+            acceptType = ALL_TYPE
         }
         try {
             mediaURIs = arrayOfNulls(3)
@@ -69,7 +68,7 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
             val intentList: MutableList<Intent> = ArrayList()
             val fileName: String = DateTimeFormat.format(Date(), "yyyyMMdd_HHmmss")
 
-            if (type.contains("image/")) {
+            if (acceptType.contains("image/")) {
                 mediaURIs?.let {
                     it[IMAGE_TYPE] = UriUtil.fromFile(
                         webView.context, File(
@@ -78,12 +77,13 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
                         )
                     )
 
-                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[IMAGE_TYPE])
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
+                        putExtra(MediaStore.EXTRA_OUTPUT, it[IMAGE_TYPE])
+                    }
                     intentList.add(intent)
                 }
             }
-            if (type.contains("audio/")) {
+            if (acceptType.contains("audio/")) {
                 mediaURIs?.let {
                     it[AUDIO_TYPE] = UriUtil.fromFile(
                         webView.context, File(
@@ -92,12 +92,13 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
                         )
                     )
 
-                    val intent = Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION)
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[AUDIO_TYPE])
+                    val intent = Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION).apply {
+                        putExtra(MediaStore.EXTRA_OUTPUT, it[AUDIO_TYPE])
+                    }
                     intentList.add(intent)
                 }
             }
-            if (type.contains("video/")) {
+            if (acceptType.contains("video/")) {
                 mediaURIs?.let {
                     it[VIDEO_TYPE] = UriUtil.fromFile(
                         webView.context, File(
@@ -105,30 +106,26 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
                             "$fileName.mp4"
                         )
                     )
-                    val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, it[VIDEO_TYPE])
+                    val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE).apply {
+                        putExtra(MediaStore.EXTRA_OUTPUT, it[VIDEO_TYPE])
+                    }
                     intentList.add(intent)
                 }
             }
 
-            // Intent Chooser
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
-            if (ALL_TYPE == type) {
-                intent.type = "*/*"
-            } else {
-                intent.type = type
+            val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+
+                type = if (ALL_TYPE == acceptType) {
+                    "*/*"
+                } else {
+                    acceptType
+                }
             }
+
             val chooserIntent = Intent.createChooser(intent, "Chooser")
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentList.toTypedArray())
-            //++
             fileChooserActivityResultLauncher.launch(chooserIntent)
-            //||
-            //(webView.context as Activity).startActivityForResult(
-            //    chooserIntent,
-            //    RequestCode.REQUEST_FILE_CHOOSER_LOLLIPOP
-            //)
-            //--
         } catch (e: Exception) {
             Timber.e(e)
         }
