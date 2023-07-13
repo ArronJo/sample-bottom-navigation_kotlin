@@ -54,7 +54,7 @@
                     android:inputType="text"
                     android:text="EditText Component"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textSize="@dimen/largeFontSize"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />
@@ -119,7 +119,7 @@
                     android:inputType="text"
                     android:text="EditText Component"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textSize="@dimen/largeFontSize"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />
@@ -178,7 +178,7 @@
                     android:inputType="textMultiLine"
                     android:text="EditText Component"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSizeSP"
+                    android:textSize="@dimen/largeFontSize"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />

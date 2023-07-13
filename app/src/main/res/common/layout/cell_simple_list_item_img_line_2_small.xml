@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="@dimen/mediumFontSizeSP"
+    android:textSize="@dimen/mediumFontSize"
     android:orientation="horizontal"
     android:baselineAligned="false">
 
@@ -34,7 +34,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="start"
             android:textStyle="bold"
-            android:textSize="@dimen/mediumFontSizeSP"
+            android:textSize="@dimen/mediumFontSize"
             android:textColor="@color/black"
             android:text="" />
         <TextView
@@ -44,7 +44,7 @@
             android:layout_marginTop="5dp"
             android:layout_gravity="center_vertical"
             android:gravity="start"
-            android:textSize="@dimen/microFontSizeSP"
+            android:textSize="@dimen/microFontSize"
             android:textColor="@color/gray900"
             android:text="" />
     </LinearLayout>
