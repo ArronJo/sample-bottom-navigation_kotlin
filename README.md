@@ -6,7 +6,8 @@ This project is a sample for developing android application using bottom-navigat
 # Release Note
 | Version | Rev      | Date       | Comment                                                     |
 |---------|----------|------------|-------------------------------------------------------------|
-| 1.1.5   | 10010005 | 2023-07-06 | feat: add androidx.startup.                                 |
+| 1.1.6   | 10010006 | 2023-07-06 | feat: added splashScreen.                                   |
+| 1.1.5   | 10010005 | 2023-07-06 | feat: added androidx.startup.                               |
 | 1.1.4   | 10010004 | 2023-06-30 | feat: clear webview cache.                                  |
 | 1.1.3   | 10010003 | 2023-06-29 | feat: webview (fileChooser, geolocation, camera, audio) 구현. |
 | 1.1.2   | 10010002 | 2023-06-28 | feat: fullScreen 모드 구현.                                     |

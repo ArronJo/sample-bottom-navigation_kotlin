@@ -10,13 +10,14 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     namespace 'com.snc.sample.bottom_navigation_kotlin'
     compileSdk rootProject.targetSdkVersion
+    compileSdkPreview "UpsideDownCake"
 
     defaultConfig {
         applicationId "com.snc.sample.bottom_navigation_kotlin"
         minSdk rootProject.minSdkVersion
         targetSdk rootProject.targetSdkVersion
-        versionCode 10010005
-        versionName "1.1.5"
+        versionCode 10010006
+        versionName "1.1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -132,6 +133,8 @@ dependencies {
 
     implementation "androidx.startup:startup-runtime:1.1.1"
     implementation "androidx.work:work-runtime:2.8.1"
+
+    implementation 'androidx.core:core-splashscreen:1.1.0-alpha01'
 
     implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
     implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
