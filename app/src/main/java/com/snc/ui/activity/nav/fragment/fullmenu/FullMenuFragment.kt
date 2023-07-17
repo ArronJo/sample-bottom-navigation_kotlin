@@ -7,15 +7,18 @@ import android.view.View
 import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.adapter.PackageInfoAdapter
 import com.snc.ui.activity.nav.NavActivity
 import com.snc.ui.activity.nav.bizconst.BizConst
+import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT
+import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT_RESULT
 import com.snc.ui.activity.nav.fragment.base.BaseNavFragment
-import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.zero.lib.kotlin.util.PackageUtil
 import com.snc.zero.ui.kotlin.extentions.navigateWithDefaultAnimation
 import com.snc.zero.ui.kotlin.extentions.postDelayed
@@ -50,6 +53,15 @@ class FullMenuFragment : BaseNavFragment(R.layout.fragment_nav_full_menu) {
 
         setupList(view)
         setupButtons(view)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        setFragmentResultListener(KEY_BIZ_WEB_FRAGMENT) { _, bundle ->
+            val result = bundle.getString(KEY_BIZ_WEB_FRAGMENT_RESULT)
+            Timber.i("FragmentResultListener:: $KEY_BIZ_WEB_FRAGMENT_RESULT = $result")
+        }
     }
 
     private fun setupList(view: View) {

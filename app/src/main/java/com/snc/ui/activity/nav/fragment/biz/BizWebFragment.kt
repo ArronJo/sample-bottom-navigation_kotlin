@@ -12,16 +12,20 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.nav.bizconst.BizConst
+import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT
+import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT_RESULT
 import com.snc.ui.activity.webview.bridge.AndroidBridge
 import com.snc.ui.activity.webview.chooser.BizFileChooserListener
 import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
 import com.snc.utils.extenstions.loadUrlWithHeader
 import com.snc.utils.extenstions.setup
-import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarImeHeight
 import com.snc.zero.ui.kotlin.extentions.getStatusBarHeight
 import com.snc.zero.ui.kotlin.extentions.popup
@@ -107,6 +111,11 @@ class BizWebFragment : BaseDialogFragment() {
         navBack?.let {
             it.setOnClickListener {
                 dismiss()
+
+                setFragmentResult(
+                    KEY_BIZ_WEB_FRAGMENT,
+                    bundleOf(KEY_BIZ_WEB_FRAGMENT_RESULT to "dismiss")
+                )
             }
         }
 
