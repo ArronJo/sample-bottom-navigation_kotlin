@@ -21,7 +21,7 @@ import java.util.Date
 class BizFileChooserListener(private val fileChooserActivityResultLauncher: ActivityResultLauncher<Intent>) :
     FileChooserListener {
 
-    private var filePathCallbackLollipop: ValueCallback<Array<Uri>>? = null
+    private var uploadMessage: ValueCallback<Array<Uri>>? = null
     private var mediaURIs: Array<Uri?>? = null
 
     companion object {
@@ -39,7 +39,7 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
     ) {
         Timber.i("FileChooser::onOpenFileChooser")
 
-        this.filePathCallbackLollipop = filePathCallback
+        this.uploadMessage = filePathCallback
 
         var acceptType = ""
         acceptTypes?.let {
@@ -138,20 +138,20 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
     override fun onActivityResultFileChooser(result: ActivityResult) {
         Timber.i("FileChooser::onActivityResultFileChoose: resultCode[${result.resultCode}] data[${result.data}]")
 
-        if (null == filePathCallbackLollipop) {
+        if (null == uploadMessage) {
             Timber.i("[WEBVIEW] onActivityResultLollipop(): filePathCallbackLollipop is null !!!")
             return
         }
 
         if (Activity.RESULT_OK != result.resultCode) {
-            filePathCallbackLollipop!!.onReceiveValue(null)
-            filePathCallbackLollipop = null
+            uploadMessage?.onReceiveValue(null)
+            uploadMessage = null
             return
         }
 
         try {
             if (null != result.data) {
-                filePathCallbackLollipop?.onReceiveValue(
+                uploadMessage?.onReceiveValue(
                     WebChromeClient.FileChooserParams.parseResult(
                         result.resultCode,
                         result.data
@@ -170,12 +170,12 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
                         results.add(iit)
                     }
                 }
-                filePathCallbackLollipop?.onReceiveValue(results.toTypedArray())
+                uploadMessage?.onReceiveValue(results.toTypedArray())
             }
         } catch (e: java.lang.Exception) {
             Timber.e(e)
         } finally {
-            filePathCallbackLollipop = null
+            uploadMessage = null
             mediaURIs = null
         }
     }

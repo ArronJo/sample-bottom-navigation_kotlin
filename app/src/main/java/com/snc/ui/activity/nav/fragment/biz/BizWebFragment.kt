@@ -29,7 +29,7 @@ import com.snc.zero.ui.kotlin.extentions.setDarkThemeSystemBar
 import com.snc.zero.ui.kotlin.fragment.base.BaseDialogFragment
 import timber.log.Timber
 
-class BizAppWebFragment : BaseDialogFragment() {
+class BizWebFragment : BaseDialogFragment() {
 
     private val fileChooserActivityResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -82,7 +82,7 @@ class BizAppWebFragment : BaseDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =
-            inflater.inflate(R.layout.fragment_nav_biz_app_webview, container, false)
+            inflater.inflate(R.layout.fragment_nav_biz_webview, container, false)
 
         dialog?.window?.let { window ->
             val layout = view.findViewById<ViewGroup>(R.id.contentLayout)

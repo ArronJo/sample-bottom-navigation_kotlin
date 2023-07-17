@@ -3,7 +3,7 @@
     <dimen name="minimum_touch_target_size">48dp</dimen>
     <dimen name="minimum_medium_button_height">54dp</dimen>
 
-    <dimen name="titlebar_height">54dp</dimen>
+    <dimen name="titlebar_height">48dp</dimen>
     <dimen name="title_line_spacing_multiplier">1.2</dimen>
 
     <dimen name="progress_corners_radius_large">100dp</dimen>

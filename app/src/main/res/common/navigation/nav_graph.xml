@@ -12,7 +12,7 @@
 
     <dialog
         android:id="@+id/bizWebFragment"
-        android:name="com.snc.ui.activity.nav.fragment.biz.BizAppWebFragment"
+        android:name="com.snc.ui.activity.nav.fragment.biz.BizWebFragment"
         android:label="BizAppWebFragment" />
 
 </navigation>
