@@ -31,8 +31,8 @@ class BizWebChromeClient(
 
     override fun onShowFileChooser(
         webView: WebView,
-        filePathCallback: ValueCallback<Array<Uri>>,
-        fileChooserParams: FileChooserParams
+        filePathCallback: ValueCallback<Array<Uri>>?,
+        fileChooserParams: FileChooserParams?
     ): Boolean {
         Timber.i("[WebView::WebChromeClient] onShowFileChooser()::\nfilePathCallback[$filePathCallback]  fileChooserParams[$fileChooserParams]")
 
@@ -47,7 +47,7 @@ class BizWebChromeClient(
             .setPermissionListener(object : RPermissionListener {
                 override fun onPermissionGranted(grantPermissions: List<String>) {
                     Timber.i("[WEBVIEW] onPermissionGranted()")
-                    val acceptTypes = fileChooserParams.acceptTypes
+                    val acceptTypes = fileChooserParams?.acceptTypes
                     fileChooserListener?.onOpenFileChooser(
                         webView,
                         filePathCallback,
@@ -58,13 +58,21 @@ class BizWebChromeClient(
                 override fun onPermissionDenied(deniedPermissions: List<String>) {
                     Timber.w("[WEBVIEW] onPermissionDenied()...$deniedPermissions")
 
-                    IntentUtil.showGotoSettingsDialog(activity, activity.packageName, deniedPermissions)
+                    IntentUtil.showGotoSettingsDialog(
+                        activity,
+                        activity.packageName,
+                        deniedPermissions
+                    )
                 }
 
                 override fun onPermissionRationaleShouldBeShown(deniedPermissions: List<String>) {
                     Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
 
-                    IntentUtil.showGotoSettingsDialog(activity, activity.packageName, deniedPermissions)
+                    IntentUtil.showGotoSettingsDialog(
+                        activity,
+                        activity.packageName,
+                        deniedPermissions
+                    )
                 }
             })
             .check()
@@ -103,7 +111,11 @@ class BizWebChromeClient(
                 override fun onPermissionRationaleShouldBeShown(deniedPermissions: List<String>) {
                     Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
 
-                    IntentUtil.showGotoSettingsDialog(activity, activity.packageName, deniedPermissions)
+                    IntentUtil.showGotoSettingsDialog(
+                        activity,
+                        activity.packageName,
+                        deniedPermissions
+                    )
                 }
             })
             .check()
@@ -139,7 +151,11 @@ class BizWebChromeClient(
                                 Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
                                 request.deny()
 
-                                IntentUtil.showGotoSettingsDialog(activity, activity.packageName, deniedPermissions)
+                                IntentUtil.showGotoSettingsDialog(
+                                    activity,
+                                    activity.packageName,
+                                    deniedPermissions
+                                )
                             }
                         })
                         .check()
@@ -167,7 +183,11 @@ class BizWebChromeClient(
                                 Timber.w("[WEBVIEW] onPermissionRationaleShouldBeShown()...$deniedPermissions")
                                 request.deny()
 
-                                IntentUtil.showGotoSettingsDialog(activity, activity.packageName, deniedPermissions)
+                                IntentUtil.showGotoSettingsDialog(
+                                    activity,
+                                    activity.packageName,
+                                    deniedPermissions
+                                )
                             }
                         })
                         .check()
@@ -250,12 +270,15 @@ class BizWebChromeClient(
             MessageLevel.ERROR -> {
                 Timber.e(message)
             }
+
             MessageLevel.WARNING -> {
                 Timber.w(message)
             }
+
             MessageLevel.DEBUG -> {
                 Timber.d(message)
             }
+
             else -> {
                 Timber.i(message)
             }

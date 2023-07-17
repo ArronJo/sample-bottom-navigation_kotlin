@@ -9,8 +9,8 @@ interface FileChooserListener {
 
     fun onOpenFileChooser(
         webView: WebView,
-        filePathCallback: ValueCallback<Array<Uri>>,
-        acceptTypes: Array<String>
+        filePathCallback: ValueCallback<Array<Uri>>?,
+        acceptTypes: Array<String>?
     )
 
     fun onActivityResultFileChooser(result: ActivityResult)

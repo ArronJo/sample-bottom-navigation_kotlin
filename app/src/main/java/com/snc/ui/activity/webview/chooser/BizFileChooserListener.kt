@@ -18,7 +18,8 @@ import timber.log.Timber
 import java.io.File
 import java.util.Date
 
-class BizFileChooserListener(private val fileChooserActivityResultLauncher: ActivityResultLauncher<Intent>) : FileChooserListener {
+class BizFileChooserListener(private val fileChooserActivityResultLauncher: ActivityResultLauncher<Intent>) :
+    FileChooserListener {
 
     private var filePathCallbackLollipop: ValueCallback<Array<Uri>>? = null
     private var mediaURIs: Array<Uri?>? = null
@@ -33,35 +34,38 @@ class BizFileChooserListener(private val fileChooserActivityResultLauncher: Acti
 
     override fun onOpenFileChooser(
         webView: WebView,
-        filePathCallback: ValueCallback<Array<Uri>>,
-        acceptTypes: Array<String>
+        filePathCallback: ValueCallback<Array<Uri>>?,
+        acceptTypes: Array<String>?
     ) {
         Timber.i("FileChooser::onOpenFileChooser")
 
         this.filePathCallbackLollipop = filePathCallback
 
         var acceptType = ""
-        for (type in acceptTypes) {
-            if (TextUtils.isEmpty(type)) {
-                continue
-            }
-            if (!type.startsWith("image/")
-                && !type.startsWith("audio/")
-                && !type.startsWith("video/")
-                && !type.startsWith("application/")
-            ) {
-                continue
-            }
-            acceptType += if (TextUtils.isEmpty(acceptType)) {
-                type
-            } else {
-                ",$type"
+        acceptTypes?.let {
+            for (type in it) {
+                if (TextUtils.isEmpty(type)) {
+                    continue
+                }
+                if (!type.startsWith("image/")
+                    && !type.startsWith("audio/")
+                    && !type.startsWith("video/")
+                    && !type.startsWith("application/")
+                ) {
+                    continue
+                }
+                acceptType += if (TextUtils.isEmpty(acceptType)) {
+                    type
+                } else {
+                    ",$type"
+                }
             }
         }
 
         if (acceptType.isEmpty() || "*/*".equals(acceptType, ignoreCase = true)) {
             acceptType = ALL_TYPE
         }
+
         try {
             mediaURIs = arrayOfNulls(3)
 
