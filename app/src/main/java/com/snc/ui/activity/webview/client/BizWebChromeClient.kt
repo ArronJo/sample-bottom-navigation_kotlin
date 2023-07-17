@@ -21,7 +21,7 @@ import com.snc.zero.ui.kotlin.dialog.ModalBuilder
 import com.snc.zero.ui.kotlin.util.IntentUtil
 import timber.log.Timber
 
-class BizAppWebChromeClient(
+class BizWebChromeClient(
     private val activity: Activity,
     private val webView: WebView,
     private val listener: OnLifeCycleListener? = null

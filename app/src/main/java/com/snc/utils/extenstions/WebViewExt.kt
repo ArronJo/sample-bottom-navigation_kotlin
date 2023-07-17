@@ -15,7 +15,7 @@ import android.webkit.WebView
 import android.widget.ProgressBar
 import com.snc.consts.AppConfig
 import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
-import com.snc.ui.activity.webview.client.BizAppWebChromeClient
+import com.snc.ui.activity.webview.client.BizWebChromeClient
 import com.snc.ui.activity.webview.client.BizWebViewClient
 import com.snc.ui.activity.webview.client.OnLifeCycleListener
 import com.snc.ui.activity.webview.download.BizDownloadListener
@@ -34,7 +34,7 @@ private val gHandler = Handler(Looper.getMainLooper())
 fun WebView.setup(
     activity: Activity,
     bizWebViewClient: BizWebViewClient? = null,
-    bizWebChromeClient: BizAppWebChromeClient? = null,
+    bizWebChromeClient: BizWebChromeClient? = null,
     fileChooserListener: FileChooserListener? = null,
     listener: OnLifeCycleListener? = null,
     progressBar: ProgressBar? = null
@@ -121,7 +121,7 @@ fun WebView.setup(
         }
     })
 
-    val chromeClient = bizWebChromeClient ?: BizAppWebChromeClient(activity, this, object : OnLifeCycleListener {
+    val chromeClient = bizWebChromeClient ?: BizWebChromeClient(activity, this, object : OnLifeCycleListener {
         override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
         }
 
