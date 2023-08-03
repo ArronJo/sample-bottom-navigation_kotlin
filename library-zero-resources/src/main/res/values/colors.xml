@@ -10,11 +10,14 @@
     <color name="magenta100">#FFD2E9</color>
 
     <color name="deepBlue100">#C3D7FD</color>
+    <color name="deepBlue500">#4780F0</color>
 
     <color name="coolGray100">#D3DCE8</color>
     <color name="coolGray800">#637388</color>
 
     <color name="orange500">#FA6600</color>
+
+    <color name="red500">#F53F3F</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#272B2F</color>
@@ -23,4 +26,7 @@
 
     <color name="white_opacity_20">#33ffffff</color>
     <color name="black_opacity_20">#33000000</color>
+
+    <color name="positive">@color/deepBlue500</color>
+    <color name="negative">@color/red500</color>
 </resources>

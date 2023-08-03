@@ -141,9 +141,8 @@ dependencies {
 
     implementation "androidx.webkit:webkit:1.7.0"
 
-    
-    // https://square.github.io/leakcanary/getting_started/
+    implementation "io.github.muddz:styleabletoast:2.4.0"
+
     releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
-    // debugImplementation because LeakCanary should only run in debug builds.
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 }

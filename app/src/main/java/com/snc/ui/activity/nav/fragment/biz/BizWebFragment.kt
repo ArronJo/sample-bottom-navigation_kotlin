@@ -3,7 +3,9 @@ package com.snc.ui.activity.nav.fragment.biz
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -31,6 +34,7 @@ import com.snc.zero.ui.kotlin.extentions.getStatusBarHeight
 import com.snc.zero.ui.kotlin.extentions.popup
 import com.snc.zero.ui.kotlin.extentions.setDarkThemeSystemBar
 import com.snc.zero.ui.kotlin.fragment.base.BaseDialogFragment
+import io.github.muddz.styleabletoast.StyleableToast
 import timber.log.Timber
 
 class BizWebFragment : BaseDialogFragment() {
@@ -116,6 +120,35 @@ class BizWebFragment : BaseDialogFragment() {
                     KEY_BIZ_WEB_FRAGMENT,
                     bundleOf(KEY_BIZ_WEB_FRAGMENT_RESULT to "dismiss")
                 )
+            }
+        }
+
+        val moreBtn1 = view.findViewById<ImageButton>(R.id.more_btn_1)
+        moreBtn1?.let {
+            it.setOnClickListener {
+                //Toast.makeText(view.context, "clicked more_btn_1.", Toast.LENGTH_SHORT).show()
+                StyleableToast.Builder(view.context)
+                    .text("clicked more_btn_1.")
+                    .textColor(Color.WHITE)
+                    .backgroundColor(ContextCompat.getColor(view.context, com.snc.zero.resources.R.color.positive))
+                    .gravity(Gravity.TOP)
+                    .iconEnd(com.snc.zero.resources.R.drawable.ic_phone)
+                    .cornerRadius(16)
+                    .show()
+            }
+        }
+        val moreBtn2 = view.findViewById<ImageButton>(R.id.more_btn_2)
+        moreBtn2?.let {
+            it.setOnClickListener {
+                //Toast.makeText(view.context, "clicked more_btn_2.", Toast.LENGTH_SHORT).show()
+                StyleableToast.Builder(view.context)
+                    .text("clicked more_btn_2.")
+                    .textColor(Color.WHITE)
+                    .backgroundColor(ContextCompat.getColor(view.context, com.snc.zero.resources.R.color.negative))
+                    .gravity(Gravity.BOTTOM)
+                    .iconStart(com.snc.zero.resources.R.drawable.ic_bell)
+                    .cornerRadius(8)
+                    .show()
             }
         }
 
