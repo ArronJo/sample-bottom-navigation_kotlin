@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
 }
 
 def keystorePropertiesFile = rootProject.file("./keystore/keystore.properties")
@@ -8,26 +8,26 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    namespace 'com.snc.sample.bottom_navigation_kotlin'
-    compileSdk rootProject.targetSdkVersion
+    namespace "com.snc.sample.bottom_navigation_kotlin"
+    compileSdk rootProject.target_sdk_version
     compileSdkPreview "UpsideDownCake"
 
     defaultConfig {
         applicationId "com.snc.sample.bottom_navigation_kotlin"
-        minSdk rootProject.minSdkVersion
-        targetSdk rootProject.targetSdkVersion
+        minSdk rootProject.min_sdk_version
+        targetSdk rootProject.target_sdk_version
         versionCode 10010006
         versionName "1.1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables {
-            useSupportLibrary true
+            useSupportLibrary = true
         }
 
         ndk {
             //noinspection ChromeOsAbiSupport
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
         }
 
         setProperty("archivesBaseName", "${applicationId}-${versionName}")
@@ -35,10 +35,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties["storeFile"])
+            storePassword keystoreProperties["storePassword"]
+            keyAlias keystoreProperties["keyAlias"]
+            keyPassword keystoreProperties["keyPassword"]
 
             v1SigningEnabled true
             v2SigningEnabled true
@@ -53,7 +53,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
         }
     }
@@ -81,68 +81,68 @@ android {
 
     sourceSets {
         main {
-            assets.srcDirs = ['src/main/assets/common']
-            java.srcDirs = ['src/main/java']
-            res.srcDirs = ['src/main/res/common']
+            assets.srcDirs = ["src/main/assets/common"]
+            java.srcDirs = ["src/main/java"]
+            res.srcDirs = ["src/main/res/common"]
         }
         dev {
-            assets.srcDirs += ['src/main/assets/dev']
-            java.srcDirs = ['src/dev/java']
-            res.srcDirs = ['src/main/res/dev']
+            assets.srcDirs += ["src/main/assets/dev"]
+            java.srcDirs = ["src/dev/java"]
+            res.srcDirs = ["src/main/res/dev"]
         }
         stage {
-            assets.srcDirs += ['src/main/assets/stage']
-            java.srcDirs = ['src/stage/java']
-            res.srcDirs = ['src/main/res/stage']
+            assets.srcDirs += ["src/main/assets/stage"]
+            java.srcDirs = ["src/stage/java"]
+            res.srcDirs = ["src/main/res/stage"]
         }
         prod {
-            assets.srcDirs += ['src/main/assets/prod']
-            java.srcDirs = ['src/prod/java']
-            res.srcDirs = ['src/main/res/prod']
+            assets.srcDirs += ["src/main/assets/prod"]
+            java.srcDirs = ["src/prod/java"]
+            res.srcDirs = ["src/main/res/prod"]
         }
     }
     compileOptions {
-        sourceCompatibility rootProject.javaCompilerVersion
-        targetCompatibility rootProject.javaCompilerVersion
+        sourceCompatibility = rootProject.java_compiler_version
+        targetCompatibility = rootProject.java_compiler_version
     }
     kotlin {
-        jvmToolchain(rootProject.jvmToolchain)
+        jvmToolchain(rootProject.jvm_toolchain)
     }
     kotlinOptions {
-        jvmTarget = rootProject.javaCompilerVersion.toString()
+        jvmTarget = rootProject.java_compiler_version.toString()
     }
 }
 
 dependencies {
-    implementation project(':library-zero-lib-kotlin')
-    implementation project(':library-zero-ui-kotlin')
-    implementation project(':library-zero-resources')
+    implementation(project(":library-zero-lib-kotlin"))
+    implementation(project(":library-zero-ui-kotlin"))
+    implementation(project(":library-zero-resources"))
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation "androidx.multidex:multidex:2.0.1"
+    implementation("androidx.multidex:multidex:2.0.1")
 
-    implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    implementation "androidx.startup:startup-runtime:1.1.1"
-    implementation "androidx.work:work-runtime:2.8.1"
+    implementation("androidx.startup:startup-runtime:1.1.1")
+    implementation("androidx.work:work-runtime:2.8.1")
 
-    implementation 'androidx.core:core-splashscreen:1.1.0-alpha01'
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha01")
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.6.0"
-    implementation "androidx.navigation:navigation-ui-ktx:2.6.0"
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
-    implementation "androidx.webkit:webkit:1.7.0"
+    implementation("androidx.webkit:webkit:1.7.0")
 
-    implementation "io.github.muddz:styleabletoast:2.4.0"
+    implementation("io.github.muddz:styleabletoast:2.4.0")
 
-    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }

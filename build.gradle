@@ -1,11 +1,11 @@
 // Define versions in a single place
 buildscript {
     ext {
-        javaCompilerVersion = JavaVersion.VERSION_17
-        jvmToolchain = JavaVersion.VERSION_17.toString().toInteger()
+        java_compiler_version = JavaVersion.VERSION_17
+        jvm_toolchain = JavaVersion.VERSION_17.toString().toInteger()
 
-        minSdkVersion = 23
-        targetSdkVersion = 34
+        min_sdk_version = 23
+        target_sdk_version = 34
     }
     repositories {
         // Make sure that you have the following two repositories
