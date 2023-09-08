@@ -20,4 +20,16 @@
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/layer_branding</item>
         <item name="postSplashScreenTheme">@style/Theme.App</item>
     </style>
+
+    <style name="Theme.Widget.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="Theme.Widget.BottomNavigationView.InActive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Theme.Widget.BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">15sp</item>
+    </style>
 </resources>
