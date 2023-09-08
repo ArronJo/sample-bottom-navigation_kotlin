@@ -32,4 +32,5 @@
     <style name="Theme.Widget.BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">15sp</item>
     </style>
+
 </resources>
