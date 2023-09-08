@@ -18,8 +18,8 @@ android {
         applicationId "com.snc.sample.bottom_navigation_kotlin"
         minSdk rootProject.min_sdk_version
         targetSdk rootProject.target_sdk_version
-        versionCode 10010006
-        versionName "1.1.6"
+        versionCode 10010007
+        versionName "1.1.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -60,7 +60,7 @@ android {
         }
     }
 
-    flavorDimensions "server"
+    flavorDimensions = [ "server" ]
     productFlavors {
         prod {
             dimension "server"
