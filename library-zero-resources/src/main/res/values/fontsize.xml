@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
     <dimen name="microFontSize">12sp</dimen>
     <dimen name="smallFontSize">14sp</dimen>
     <dimen name="smediumFontSize">15sp</dimen>
@@ -7,4 +8,28 @@
     <dimen name="slargeFontSize">18sp</dimen>
     <dimen name="largeFontSize">20sp</dimen>
     <dimen name="xlargeFontSize">22sp</dimen>
+    -->
+
+
+    <!--
+        일반 버튼: 15px
+        CTA 버튼: 17px
+        본문: 17px
+        강조 글자: 19px
+        Caption: 14px
+        H1: (PC) 56px, (MO) 32px
+        H3: (PC) 24px, (MO) 24px
+    -->
+
+    <dimen name="microFontSize">12sp</dimen>
+    <dimen name="smallFontSize">14sp</dimen>
+    <dimen name="smediumFontSize">15sp</dimen>
+    <dimen name="mediumFontSize">17sp</dimen>
+    <dimen name="slargeFontSize">18sp</dimen>
+    <dimen name="largeFontSize">19sp</dimen>
+    <dimen name="xlargeFontSize">22sp</dimen>
+    <dimen name="xxlargeFontSize">24sp</dimen>
+    <dimen name="xxxlargeFontSize">28sp</dimen>
+    <dimen name="xxxxlargeFontSize">32sp</dimen>
+
 </resources>
