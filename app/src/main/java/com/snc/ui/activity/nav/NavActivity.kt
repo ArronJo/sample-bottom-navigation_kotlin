@@ -113,7 +113,7 @@ class NavActivity : BaseAppCompatActivity() {
             Timber.i("NavController::OnDestinationChangedListener(): destination=$destination, arguments=$arguments")
 
             when (destination.id) {
-                R.id.myContractFragment, R.id.findProductFragment -> {
+                R.id.myContractFragment, R.id.findProductFragment, R.id.newsFragment -> {
                     showBottomNav()
                 }
 
@@ -156,7 +156,10 @@ class NavActivity : BaseAppCompatActivity() {
 
     private fun handleOnBackPressedOnActivity() {
         when (navController.currentDestination?.id) {
-            R.id.findProductFragment, R.id.myContractFragment, R.id.fullMenuFragment -> {
+            R.id.findProductFragment,
+            R.id.myContractFragment,
+            R.id.newsFragment,
+            R.id.fullMenuFragment -> {
                 if (System.currentTimeMillis() > backKeyPressedTime + TIME_INTERVAL_BACK_KEY_TWICE) {
                     backKeyPressedTime = System.currentTimeMillis()
                     backKeyGuideToast.show()

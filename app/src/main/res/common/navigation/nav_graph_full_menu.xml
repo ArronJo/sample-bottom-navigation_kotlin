@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fullMenuFragment"
         android:name="com.snc.ui.activity.nav.fragment.fullmenu.FullMenuFragment"
-        android:label="@string/full_menu"
+        android:label="@string/menu_full_menu"
         tools:layout="@layout/fragment_nav_full_menu">
         <deepLink
             android:id="@+id/deepLink"

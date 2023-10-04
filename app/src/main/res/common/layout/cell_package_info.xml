@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/app_icon"
-            android:layout_width="@dimen/minimum_touch_target_size"
-            android:layout_height="@dimen/minimum_touch_target_size"
+            android:layout_width="@dimen/touch_target_size_min"
+            android:layout_height="@dimen/touch_target_size_min"
             android:background="@drawable/bg_rounded_white_medium"
             android:contentDescription="application icon"
             tools:ignore="HardcodedText" />
@@ -57,7 +57,7 @@
             android:id="@+id/remove"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
-            android:minWidth="@dimen/minimum_touch_target_size"
+            android:minWidth="@dimen/touch_target_size_min"
             android:padding="8dp"
             android:gravity="center"
             android:layout_gravity="center_vertical|end"

@@ -96,13 +96,15 @@ class MyContractFragment : BaseNavFragment(R.layout.fragment_nav_my_contract) {
         }
 
         val positiveButton = view.findViewById<AppCompatButton>(R.id.positiveButton)
-        positiveButton?.let {
-            it.setOnClickListener {
+        positiveButton?.let { v ->
+            v.setOnClickListener {
                 activity?.apply {
                     if (this is NavActivity) {
                         if (isShowingBottomNav()) {
+                            v.text = getString(com.snc.zero.resources.R.string.close)
                             hideBottomNav()
                         } else {
+                            v.text = getString(com.snc.zero.resources.R.string.open)
                             showBottomNav()
                         }
                     }

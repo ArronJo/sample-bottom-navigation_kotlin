@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/myContractFragment"
         android:name="com.snc.ui.activity.nav.fragment.mycontract.MyContractFragment"
-        android:label="@string/my_contract"
+        android:label="@string/menu_my_contract"
         tools:layout="@layout/fragment_nav_my_contract">
         <deepLink
             android:id="@+id/deepLink"

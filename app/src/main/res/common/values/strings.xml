@@ -6,7 +6,9 @@
     <string name="more_button_2">more 2</string>
 
     <string name="app_splash">Splash</string>
-    <string name="my_contract">my contract</string>
-    <string name="find_product">find product</string>
-    <string name="full_menu">full menu</string>
+
+    <string name="menu_my_contract">contract</string>
+    <string name="menu_find_product">product</string>
+    <string name="menu_news">news</string>
+    <string name="menu_full_menu">menu</string>
 </resources>

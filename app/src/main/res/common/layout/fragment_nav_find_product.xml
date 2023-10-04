@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Label"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     android:labelFor="@+id/ed_top"
                     tools:ignore="HardcodedText" />
@@ -50,11 +50,11 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:gravity="start|center_vertical"
-                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:minHeight="@dimen/touch_target_size_min"
                     android:inputType="text"
                     android:text="EditText Component"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSize"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />
@@ -63,49 +63,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Label"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     android:labelFor="@+id/ed_middle"
                     tools:ignore="HardcodedText" />
@@ -115,11 +115,11 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:gravity="start|center_vertical"
-                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:minHeight="@dimen/touch_target_size_min"
                     android:inputType="text"
                     android:text="EditText Component"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSize"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />
@@ -128,35 +128,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:text="Blah Blah"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     tools:ignore="HardcodedText" />
 
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Label"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:background="@color/transparent"
                     android:labelFor="@+id/ed_bottom"
                     tools:ignore="HardcodedText" />
@@ -174,11 +174,11 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:gravity="start|center_vertical"
-                    android:minHeight="@dimen/minimum_touch_target_size"
+                    android:minHeight="@dimen/touch_target_size_min"
                     android:inputType="textMultiLine"
                     android:text="EditText Component"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/largeFontSize"
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:importantForAutofill="no"
                     tools:ignore="HardcodedText" />

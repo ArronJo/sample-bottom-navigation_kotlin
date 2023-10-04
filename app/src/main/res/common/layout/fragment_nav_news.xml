@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintVertical_chainStyle="spread_inside"
+    tools:ignore="Overdraw">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fitLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:id="@+id/contentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_toss_feed"
+                        android:scaleType="fitXY"
+                        android:padding="0dp"
+                        android:layout_margin="0dp"
+                        android:contentDescription="@string/image"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="토스, 모바일 접근성에\n날개를 달다"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="@dimen/font_size_title1"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_marginTop="48dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2021.12.02 ㆍ by 토스"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="@dimen/font_size_small"
+                        android:textStyle="normal"
+                        android:textAlignment="center"
+                        android:layout_marginTop="24dp"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="핸드폰 설정 그대로 토스앱 반영"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="@dimen/font_size_title2"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="88dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="모바일 접근성 우수앱 인증 획득"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="@dimen/font_size_title3"
+                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="48dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/font_size_medium"
+                            android:textStyle="normal"
+                            android:textAlignment="textStart"
+                            android:layout_marginEnd="14dp"
+                            android:background="@drawable/selector_gray200_large"
+                            tools:ignore="HardcodedText" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                style="@style/Theme.Widget.Text.Body2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="시작장애인 입장에서 다른 모바일 서비스보다 편하고 간단해서 쓰기 좋아요. 음성서비스를 잘 이용하고 있어요. 10점 만점이에요."
+                                android:paddingTop="14dp"
+                                tools:ignore="HardcodedText" />
+                            <TextView
+                                style="@style/Theme.Widget.Text.Caption"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="시작장애인 대상 토스 사용 후기 중."
+                                android:paddingTop="10dp"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="모바일 금융 플랫폼 '토스'가 시작장애인 등 앱 활용이 어려운 소외계층에게 호펼을 받고 있다. 앱 사용이 어려운 사용자들도 토스를 이용할 수 있도록 문턱을 넓히고 있기 때문이다."
+                        android:layout_marginTop="46dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="대부분의 앱들이 다운로드 후 최초 실행시 기본 설정이 작은 글씨로 고정되어 있다. 이 때문에 저시력자는 보조자의 도움을 받아 큰글씨 설정을 변경해야 하는 경우가 대부분이다. 하지만 토스는 휴대폰 기기의 글씨 크기 설정 그대로 토스앱에 적용해 가입단계부터 수월하게 사용이 가능하다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="일반적으로 3단계 글씨 크기 설정만 지원하는 앱들과 달리 iOS(9단계), 안드로이드(12단계)의 모든 크기 설정을 유기적으로 구현했으며 글씨가 커져도 단락 나눔이 어색해지지 않는다. 저시력자들이 애용하는 다크모드도 앱설치 후 별도의 조작 없이 그대로 앱화면에 적용된다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="기술적 부분만 개선한 것이 아니다. 시각장애인 사용자(화면을 읽어주는 기능을 켠 고객 기준)가 고객센터 연결이 필요한 경우 우선 상담 배치로 빠르게 도움을 받을 수 있다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="한 저시력 토스 사용자는 “토스 사용 이전에는 주거래 은행앱을 사용하려고 했는데 가입단계부터 신분증 촬영 등 어려움이 있었고 대체텍스트도 없었다”며 “토스는 ARS를 통해 편리하게 가입할 수 있었고 송금에서도 막히는 부분없이 사용할 수 있다”고 말했다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="다른 저시력 사용자도 “다른 시각장애인 친구의 추천으로 토스를 사용하게 됐다”며 “통상적으로 앱들은 업데이트를 거치면 깜깜한 방에서 길을 잃는 기분인데 토스는 사용하기 편리한 방향으로 바뀌는 것 같다”고 만족감을 드러냈다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="처음부터 토스가 모바일 접근성이 높은 서비스를 구현한 것은 아니었다. 지난 2017년 앱 업데이트 이후 보이스오버 기능을 사용하면 아이폰 새 버전에서 앱이 꺼진다는 고객민원이 유입된 것이 시발점이 됐다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="당시 이승건 대표는 “지난해 우리나라 장애인 인구는 250만명, 그 중 토스앱 사용과 직접적 연관이 있을 것으로 보이는 지체, 청각, 언어, 시각장애 인구는 180만명에 달한다”며 “모바일 접근성을 높이는 작업을 해야하는 당위성을 찾았다”고 말했다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="지난 11월 기준 핸드폰 화면을 읽어주는 보이스오버(아이폰 기준) 기능을 사용중인 유저는 토스 전체 가입자의 1% 미만을 차지한다. 소수의 숫자지만 최근 1년 사이 사용자가 2배 가량 늘어난 것을 감안했을 때 토스의 문턱이 장애인들에게 넓어지고 있다는 것을 의미한다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이 외에도 스크린리더가 화면을 더 잘 읽어줄 수 있도록 최적화, 드래그할 필요없이 클릭만으로 위치 변경이 가능한 기능 추가 등 모바일 접근성에 대한 다양한 기능을 추가하고 있다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="한편, 토스는 지난 9월 한국웹접근성평가센터로부터 ‘모바일 접근성 우수앱’ 인증을 획득했다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="실로암장애인자립생활센터가 선정한 ‘앱 접근성 모범사례’에 이름을 올리기도 했다. 앱 접근성 모범사례에 선정될 수 있었던 것은 모바일 접근성을 효율적으로 적용할 수 있는 환경이 구축돼있었으며 토스의 제품 자체가 직관성을 중시하고 있기 때문이라는 게 토스 측의 설명이다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/Theme.Widget.Text.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="정희연 토스 UX 헤드는 “토스는 더 쉬운 금융 서비스를 제공하는 것을 목표로 하고 있는 만큼 장애인들에게도 접근성을 높이는 것을 중요 과제로 생각하고 있다”며 “앞으로도 사용자 중심의 서비스를 만들어 가겠다는 노력을 이어가겠다”고 강조했다."
+                        android:layout_marginTop="36dp"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingVertical="30dp"
+                    android:paddingHorizontal="80dp"
+                    android:background="@drawable/selector_gray200_large"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="모두를 위한 앱 토스"
+                        android:textColor="?attr/colorOnPrimary"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:paddingTop="8dp"
+                        tools:ignore="HardcodedText" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        style="@style/Theme.Widget.Button.Medium.ClearBlue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="지금 사용하기"
+                        android:textSize="@dimen/font_size_medium"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/Theme.Widget.Button.Large.ClearBlue"
+                    android:id="@+id/positiveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/open"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
