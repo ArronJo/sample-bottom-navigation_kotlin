@@ -16,8 +16,8 @@ compileSdkPreview = "UpsideDownCake"
         minSdk = rootProject.extra["min_sdk_version"] as Int
         //targetSdk = rootProject.extra["target_sdk_version"] as Int
 
-        versionCode = 10010006
-        versionName = "1.1.6"
+        versionCode = 10010007
+        versionName = "1.1.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
