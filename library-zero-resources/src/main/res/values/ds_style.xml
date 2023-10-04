@@ -1,0 +1,89 @@
+<resources>
+
+    <!-- BottomNavigationView -->
+    <!--<style name="Theme.Widget.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">-->
+    <style name="Theme.Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="Theme.Widget.BottomNavigationView.InActive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.Widget.BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <!-- Text -->
+    <style name="Theme.Widget.Text.Body1" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier_medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">none</item>
+        <item name="android:scrollHorizontally">false</item>
+    </style>
+
+    <style name="Theme.Widget.Text.Body2" parent="@style/TextAppearance.AppCompat.Body2">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/font_size_smedium</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier_small</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+    <style name="Theme.Widget.Text.Caption" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_size_smedium</item>
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier_small</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/gray700</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+
+    <!-- Button -->
+    <style name="Theme.Widget.Button" parent="@style/Widget.AppCompat.Button.Borderless" />
+
+    <style name="Theme.Widget.Button.Medium" parent="@style/Theme.Widget.Button">
+        <item name="android:background">@drawable/selector_on_primary_medium</item>
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <!--<style name="Theme.Widget.Button.Medium.Primary" parent="@style/Theme.Widget.Button.Medium">
+        <item name="android:background">@drawable/selector_orange500_medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    -->
+
+    <style name="Theme.Widget.Button.Large" parent="@style/Theme.Widget.Button">
+        <item name="android:minHeight">@dimen/button_height_large</item>
+        <item name="android:background">@drawable/selector_on_primary_large</item>
+        <item name="android:textSize">@dimen/font_size_slarge</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Large.Primary" parent="@style/Theme.Widget.Button.Large">
+        <item name="android:background">@drawable/selector_orange500_large</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="Theme.Widget.Button.Medium.ClearBlue" parent="@style/Theme.Widget.Button.Medium">
+        <item name="android:background">@drawable/selector_clear_blue600_large</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Large.ClearBlue" parent="@style/Theme.Widget.Button.Large">
+        <item name="android:background">@drawable/selector_clear_blue600_large</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>

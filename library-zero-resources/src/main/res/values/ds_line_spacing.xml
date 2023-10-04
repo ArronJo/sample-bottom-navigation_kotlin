@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="line_spacing_multiplier_small">1.1</dimen>
+    <dimen name="line_spacing_multiplier_medium">1.2</dimen>
+
+</resources>

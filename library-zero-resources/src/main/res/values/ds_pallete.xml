@@ -3,7 +3,9 @@
     <color name="transparent">#00000000</color>
 
     <color name="gray100">#F5F6F7</color>
+    <color name="gray200">#F1F2F5</color>
     <color name="gray600">#A6ABB1</color>
+    <color name="gray700">#8C959D</color>
     <color name="gray800">#737C85</color>
     <color name="gray900">#485059</color>
 
@@ -11,6 +13,8 @@
 
     <color name="deepBlue100">#C3D7FD</color>
     <color name="deepBlue500">#4780F0</color>
+
+    <color name="clearBlue600">#3182f6</color>
 
     <color name="coolGray100">#D3DCE8</color>
     <color name="coolGray800" tools:ignore="UnusedResources">#637388</color>
@@ -29,4 +33,5 @@
 
     <color name="positive">@color/deepBlue500</color>
     <color name="negative">@color/red500</color>
+
 </resources>
