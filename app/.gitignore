@@ -1,3 +1,4 @@
 /build
-build.gradle.*.md
+build.gradle.md
+build.gradle.kts.md
 /src/main/res/common/layout/fragment_nav_test_*.xml
