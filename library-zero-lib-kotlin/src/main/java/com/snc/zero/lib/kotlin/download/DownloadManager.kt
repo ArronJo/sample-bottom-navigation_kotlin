@@ -59,6 +59,7 @@ class DownloadManager {
         }
     }
 
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     private fun registerDownloadReceiver(context: Context, listener: OnDownloadListener? = null) {
         val intentFilter = IntentFilter()
         intentFilter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
