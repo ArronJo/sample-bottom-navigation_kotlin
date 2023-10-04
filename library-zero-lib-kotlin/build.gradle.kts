@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -42,7 +40,7 @@ android {
 dependencies {
     //implementation(project(path: ":library-zero-androidx-kotlin"))
 
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
 
