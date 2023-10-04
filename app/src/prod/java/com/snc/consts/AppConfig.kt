@@ -1,4 +1,4 @@
-package com.hanwhalife.consts
+package com.snc.consts
 
 object AppConfig {
 
