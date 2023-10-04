@@ -6,6 +6,9 @@ This project is a sample for developing android application using bottom-navigat
 # Release Note
 | Version | Rev      | Date       | Comment                                                     |
 |---------|----------|------------|-------------------------------------------------------------|
+| 1.1.7   | 10010007 | 2023-10-04 | chore: build.gradle -> build.gradle.kts                     |
+|         |          |            | feat: added news tab.                                       |
+|         |          |            | fix: resource token 변경                                      |
 | 1.1.6   | 10010006 | 2023-07-06 | feat: added splashScreen.                                   |
 | 1.1.5   | 10010005 | 2023-07-06 | feat: added androidx.startup.                               |
 | 1.1.4   | 10010004 | 2023-06-30 | feat: clear webview cache.                                  |
