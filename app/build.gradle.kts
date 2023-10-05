@@ -4,12 +4,13 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
-namespace = "com.snc.sample.bottom_navigation_kotlin"
-compileSdk = rootProject.extra["target_sdk_version"] as Int
-compileSdkPreview = "UpsideDownCake"
+    namespace = "com.snc.sample.bottom_navigation_kotlin"
+    compileSdk = rootProject.extra["target_sdk_version"] as Int
+    compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
         applicationId = "com.snc.sample.bottom_navigation_kotlin"
@@ -142,11 +143,11 @@ compileSdkPreview = "UpsideDownCake"
 }
 
 dependencies {
-implementation(project(":library-zero-lib-kotlin"))
-implementation(project(":library-zero-ui-kotlin"))
-implementation(project(":library-zero-resources"))
+    implementation(project(":library-zero-lib-kotlin"))
+    implementation(project(":library-zero-ui-kotlin"))
+    implementation(project(":library-zero-resources"))
 
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     testImplementation("junit:junit:4.13.2")
@@ -162,15 +163,15 @@ implementation(project(":library-zero-resources"))
     implementation("androidx.startup:startup-runtime:1.1.1")
     implementation("androidx.work:work-runtime:2.8.1")
 
-    implementation("androidx.core:core-splashscreen:1.1.0-alpha01")
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
 
-    implementation("androidx.webkit:webkit:1.7.0")
+    implementation("androidx.webkit:webkit:1.8.0")
 
     implementation("io.github.muddz:styleabletoast:2.4.0")
 
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
