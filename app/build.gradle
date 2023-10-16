@@ -1,0 +1,157 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def keystorePropertiesFile = rootProject.file("./keystore/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+namespace 'com.snc.sample.bottom_navigation_kotlin'
+compileSdk rootProject.target_sdk_version
+compileSdkPreview "UpsideDownCake"
+
+    defaultConfig {
+        applicationId "com.snc.sample.bottom_navigation_kotlin"
+        minSdk rootProject.min_sdk_version
+        targetSdk rootProject.target_sdk_version
+        versionCode 10010007
+        versionName "1.1.7"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        ndk {
+            //noinspection ChromeOsAbiSupport
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        setProperty("archivesBaseName", "${applicationId}-${versionName}")
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions = [ "server" ]
+    productFlavors {
+        prod {
+            dimension "server"
+            manifestPlaceholders["applicationLabel"] = "@string/app_name"
+            manifestPlaceholders["providerSuffixName"] = ""
+            resValue "string", "flavors", "prod"
+        }
+        stage {
+            dimension "server"
+            applicationIdSuffix ".stage"
+            manifestPlaceholders["applicationLabel"] = "@string/app_name"
+            manifestPlaceholders["providerSuffixName"] = "_stage"
+            resValue "string", "flavors", "stage"
+        }
+        dev {
+            dimension "server"
+            applicationIdSuffix ".dev"
+            manifestPlaceholders["applicationLabel"] = "@string/app_name"
+            manifestPlaceholders["providerSuffixName"] = "_dev"
+            resValue "string", "flavors", "dev"
+        }
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets/common']
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res/common']
+        }
+        dev {
+            assets.srcDirs += ['src/main/assets/dev']
+            java.srcDirs = ['src/dev/java']
+            res.srcDirs = ['src/main/res/dev']
+        }
+        stage {
+            assets.srcDirs += ['src/main/assets/stage']
+            java.srcDirs = ['src/stage/java']
+            res.srcDirs = ['src/main/res/stage']
+        }
+        prod {
+            assets.srcDirs += ['src/main/assets/prod']
+            java.srcDirs = ['src/prod/java']
+            res.srcDirs = ['src/main/res/prod']
+        }
+    }
+    //sourceSets.configureEach {// this: com.android.build.api.dsl.AndroidSourceSet ->
+    //    println("sourceSet.name = \"${name}/\"")
+    //    // Not a kotlin.sequences.all call anymore so nothing to return
+    //}
+    compileOptions {
+        sourceCompatibility rootProject.java_compiler_version
+        targetCompatibility rootProject.java_compiler_version
+    }
+    kotlin {
+        jvmToolchain(rootProject.jvm_toolchain)
+    }
+    kotlinOptions {
+        jvmTarget = rootProject.java_compiler_version.toString()
+    }
+}
+
+dependencies {
+implementation project(':library-zero-lib-kotlin')
+implementation project(':library-zero-ui-kotlin')
+implementation project(':library-zero-resources')
+
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation "androidx.startup:startup-runtime:1.1.1"
+    implementation "androidx.work:work-runtime:2.8.1"
+
+    implementation 'androidx.core:core-splashscreen:1.1.0-alpha02'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.4"
+    implementation "androidx.navigation:navigation-ui-ktx:2.7.4"
+
+    implementation "androidx.webkit:webkit:1.8.0"
+
+    implementation("io.github.muddz:styleabletoast:2.4.0")
+
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:4.0.0"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+}
