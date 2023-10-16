@@ -6,6 +6,7 @@ This project is a sample for developing android application using bottom-navigat
 # Release Note
 | Version | Rev      | Date       | Comment                                                     |
 |---------|----------|------------|-------------------------------------------------------------|
+| 1.1.8   | 10010008 | 2023-10-16 | fix: build.gradle: groovy -> kotlin 이슈가 있어서 일단 원복           |
 | 1.1.7   | 10010007 | 2023-10-04 | chore: build.gradle -> build.gradle.kts                     |
 |         |          |            | feat: added news tab.                                       |
 |         |          |            | fix: resource token 변경                                      |

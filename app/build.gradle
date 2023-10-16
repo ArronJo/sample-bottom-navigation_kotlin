@@ -18,8 +18,8 @@ compileSdkPreview "UpsideDownCake"
         applicationId "com.snc.sample.bottom_navigation_kotlin"
         minSdk rootProject.min_sdk_version
         targetSdk rootProject.target_sdk_version
-        versionCode 10010007
-        versionName "1.1.7"
+        versionCode 10010008
+        versionName "1.1.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
