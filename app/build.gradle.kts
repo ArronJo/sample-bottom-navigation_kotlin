@@ -179,17 +179,17 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation("androidx.startup:startup-runtime:1.1.1")
-    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.work:work-runtime:2.9.0")
 
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
 
-    implementation("androidx.webkit:webkit:1.8.0")
+    implementation("androidx.webkit:webkit:1.9.0")
 
     implementation("io.github.muddz:styleabletoast:2.4.0")
 
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
+    //releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+    //debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
