@@ -35,7 +35,9 @@ android {
 
         ndk {
             //noinspection ChromeOsAbiSupport
-            abiFilters.addAll(arrayOf("armeabi", "armeabi-v7a", "arm64-v8a"))
+            abiFilters.add("armeabi")
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
         }
 
         setProperty("archivesBaseName", "${applicationId}-${versionName}")

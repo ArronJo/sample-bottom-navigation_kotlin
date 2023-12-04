@@ -127,8 +127,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="시작장애인 입장에서 다른 모바일 서비스보다 편하고 간단해서 쓰기 좋아요. 음성서비스를 잘 이용하고 있어요. 10점 만점이에요."
+                                android:justificationMode="none"
                                 android:paddingTop="14dp"
-                                tools:ignore="HardcodedText" />
+                                tools:ignore="HardcodedText,UnusedAttribute" />
                             <TextView
                                 style="@style/Theme.Widget.Text.Caption"
                                 android:layout_width="match_parent"
