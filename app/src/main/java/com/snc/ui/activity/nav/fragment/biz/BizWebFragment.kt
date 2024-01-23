@@ -90,7 +90,7 @@ class BizWebFragment : BaseDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =
-            inflater.inflate(R.layout.fragment_nav_biz_webview, container, false)
+            inflater.inflate(R.layout.fragment_biz_webview, container, false)
 
         dialog?.window?.let { window ->
             val layout = view.findViewById<ViewGroup>(R.id.contentLayout)

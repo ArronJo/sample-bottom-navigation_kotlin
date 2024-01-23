@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/menu_my_contract"
+    android:id="@+id/nav_my_contract"
     app:startDestination="@+id/myContractFragment"
     xmlns:tools="http://schemas.android.com/tools">
 

@@ -14,7 +14,7 @@ import com.snc.zero.ui.kotlin.extentions.postDelayed
 import com.snc.zero.ui.kotlin.fragment.base.BaseFragment
 import timber.log.Timber
 
-class SplashFragment : BaseFragment(R.layout.fragment_nav_splash) {
+class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +45,10 @@ class SplashFragment : BaseFragment(R.layout.fragment_nav_splash) {
 
     private fun goToNext() {
         findNavController().navigateWithDefaultAnimation(
-            R.id.menu_my_contract,
-            //R.id.menu_find_product,
-            //R.id.menu_full_menu,
+            R.id.nav_my_contract,
+            //R.id.nav_find_product,
+            //R.id.nav_news,
+            //R.id.nav_full_menu,
             bundleOf("arg1" to "1"),
             NavOptions.Builder()
         )
