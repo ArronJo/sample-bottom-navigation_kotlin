@@ -10,6 +10,10 @@
 /.idea/appInsightsSettings.xml
 /.idea/deploymentTargetDropDown.xml
 /.idea/inspectionProfiles/Project_Default.xml
+/.idea/migrations.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/appInsightsSettings.xml
+.idea
 .DS_Store
 /build
 /captures
