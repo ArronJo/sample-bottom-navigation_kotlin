@@ -25,8 +25,8 @@ android {
         minSdk = rootProject. extra["min_sdk_version"] as Int
         targetSdk = rootProject.extra["target_sdk_version"] as Int
 
-        versionCode = 10010009
-        versionName = "1.1.9"
+        versionCode = 10010010
+        versionName = "1.1.10"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
