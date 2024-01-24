@@ -8,12 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorOnPrimary"
-        tools:context="com.snc.activity.nav.NavActivity">
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.snc.ui.activity.nav.NavActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fitLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +27,14 @@
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/nav_host_container"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="0dp"
-                android:layout_marginBottom="0dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph"
                 app:layout_constrainedHeight="true"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorOnPrimary"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:theme="@style/Theme.Widget.BottomNavigationView"
                 app:itemTextAppearanceActive="@style/Theme.Widget.BottomNavigationView.Active"
                 app:itemTextAppearanceInactive="@style/Theme.Widget.BottomNavigationView.InActive"
@@ -48,11 +53,11 @@
                 app:itemHorizontalTranslationEnabled="true"
                 app:labelVisibilityMode="labeled"
                 app:itemRippleColor="@color/md3_navigation_bar_ripple_color_selector"
+                app:layout_constraintTop_toBottomOf="@+id/nav_host_container"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:menu="@menu/menu_bottom_nav"
-                tools:ignore="PrivateResource" />
+                app:menu="@menu/nav_bottom_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

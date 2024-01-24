@@ -9,10 +9,35 @@
         android:id="@+id/splashFragment"
         android:name="com.snc.ui.activity.nav.fragment.launch.SplashFragment"
         android:label="@string/app_splash"
-        tools:layout="@layout/fragment_nav_splash">
+        tools:layout="@layout/fragment_splash">
+
         <deepLink
             android:id="@+id/deepLink"
             app:uri="hanwhalife.com" />
+
+        <!--
+            findNavController().navigate(R.id.action_to_MyContractFragment)
+            findNavController().navigate(R.id.action_to_FindProductFragment)
+            findNavController().navigate(R.id.action_to_NewsFragment)
+            findNavController().navigate(R.id.action_to_FullMenuFragment)
+        -->
+        <!--
+        <action
+            android:id="@+id/action_to_MyContractFragment"
+            app:destination="@id/myContractFragment" />
+
+        <action
+            android:id="@+id/action_to_FindProductFragment"
+            app:destination="@id/findProductFragment" />
+
+        <action
+            android:id="@+id/action_to_NewsFragment"
+            app:destination="@id/newsFragment" />
+
+        <action
+            android:id="@+id/action_to_FullMenuFragment"
+            app:destination="@id/fullMenuFragment" />
+        -->
     </fragment>
 
 </navigation>

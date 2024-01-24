@@ -5,8 +5,8 @@
 
     <string name="app_splash">Splash</string>
 
-    <string name="menu_my_contract">contract</string>
-    <string name="menu_find_product">product</string>
-    <string name="menu_news">news</string>
-    <string name="menu_full_menu">menu</string>
+    <string name="nav_my_contract">contract</string>
+    <string name="nav_find_product">product</string>
+    <string name="nav_news">news</string>
+    <string name="nav_full_menu">menu</string>
 </resources>

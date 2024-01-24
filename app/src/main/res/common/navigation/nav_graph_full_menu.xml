@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/menu_full_menu"
+    android:id="@+id/nav_full_menu"
     app:startDestination="@+id/fullMenuFragment"
     xmlns:tools="http://schemas.android.com/tools">
 
     <fragment
         android:id="@+id/fullMenuFragment"
         android:name="com.snc.ui.activity.nav.fragment.fullmenu.FullMenuFragment"
-        android:label="@string/menu_full_menu"
+        android:label="@string/nav_full_menu"
         tools:layout="@layout/fragment_nav_full_menu">
         <deepLink
             android:id="@+id/deepLink"
