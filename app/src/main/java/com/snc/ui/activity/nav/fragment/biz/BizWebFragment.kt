@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.snc.consts.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.nav.bizconst.BizConst
 import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT
@@ -29,6 +30,7 @@ import com.snc.ui.activity.webview.chooser.BizFileChooserListener
 import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
 import com.snc.utils.extenstions.loadUrlWithHeader
 import com.snc.utils.extenstions.setup
+import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarImeHeight
 import com.snc.zero.ui.kotlin.extentions.getStatusBarHeight
 import com.snc.zero.ui.kotlin.extentions.popup
@@ -92,21 +94,23 @@ class BizWebFragment : BaseDialogFragment() {
         val view =
             inflater.inflate(R.layout.fragment_biz_webview, container, false)
 
-        dialog?.window?.let { window ->
-            val layout = view.findViewById<ViewGroup>(R.id.contentLayout)
-            layout?.let {
-                WindowCompat.setDecorFitsSystemWindows(window, false)
-                ViewCompat.setOnApplyWindowInsetsListener(layout) { v, insets ->
-                    val paddingTop = insets.getStatusBarHeight()
-                    val paddingBottom = insets.getNavigationBarImeHeight()
-                    Timber.i("BizAppWebFragment::setPadding(${v.paddingLeft}, ${paddingTop}, ${v.paddingRight}, ${paddingBottom})")
-                    v.setPadding(
-                        v.paddingLeft,
-                        paddingTop,
-                        v.paddingRight,
-                        paddingBottom
-                    )
-                    return@setOnApplyWindowInsetsListener insets
+        if (AppConfig.FEATURE_FULLSCREEN) {
+            dialog?.window?.let { window ->
+                val layout = view.findViewById<ViewGroup>(R.id.contentLayout)
+                layout?.let {
+                    WindowCompat.setDecorFitsSystemWindows(window, false)
+                    ViewCompat.setOnApplyWindowInsetsListener(layout) { v, insets ->
+                        val statusBarHeight = insets.getStatusBarHeight()
+                        val navigationBarHeight = insets.getNavigationBarHeight()
+                        Timber.i("BizAppWebFragment::setPadding(${v.paddingLeft}, ${statusBarHeight}, ${v.paddingRight}, ${navigationBarHeight})")
+                        v.setPadding(
+                            v.paddingLeft,
+                            statusBarHeight,
+                            v.paddingRight,
+                            navigationBarHeight
+                        )
+                        return@setOnApplyWindowInsetsListener insets
+                    }
                 }
             }
         }

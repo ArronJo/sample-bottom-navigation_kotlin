@@ -12,12 +12,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.snc.consts.AppConfig
-import com.snc.ui.activity.base.BaseAppCompatActivity
 import com.snc.sample.bottom_navigation_kotlin.R
-import com.snc.zero.ui.kotlin.extentions.getImeHeight
-import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
-import com.snc.zero.ui.kotlin.extentions.getNavigationBarImeHeight
-import com.snc.zero.ui.kotlin.extentions.postDelayed
+import com.snc.ui.activity.base.BaseAppCompatActivity
 import timber.log.Timber
 
 class NavActivity : BaseAppCompatActivity() {
@@ -40,56 +36,10 @@ class NavActivity : BaseAppCompatActivity() {
 
         if (AppConfig.FEATURE_FULLSCREEN) {
             WindowCompat.setDecorFitsSystemWindows(window, false)
-            insetsFullScreen()
         }
 
         setupNavHost()
         setupOnBackPressedDispatcher()
-    }
-
-    private fun insetsFullScreen() {
-        val contentView = findViewById<ViewGroup>(R.id.fitLayout)
-        contentView?.let {
-            val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
-            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
-                Timber.i("NavHostContainer::insets.getImeHeight() = ${insets.getImeHeight()}")
-                if (insets.getImeHeight() > 0) {
-                    hideBottomNav()
-
-                    val paddingBottom = insets.getNavigationBarImeHeight()
-                    Timber.i("NavHostContainer::setPadding + Ime(${v.paddingLeft}, ${v.paddingTop}, ${v.paddingRight}, ${paddingBottom})")
-                    navHostContainer.setPadding(
-                        v.paddingLeft,
-                        v.paddingTop,
-                        v.paddingRight,
-                        paddingBottom
-                    )
-                } else {
-                    val destinationId = navController.currentDestination?.id
-                    if (R.id.myContractFragment != destinationId
-                        && R.id.findProductFragment != destinationId
-                        && R.id.newsFragment != destinationId
-                        && R.id.fullMenuFragment != destinationId
-                    ) {
-                        Timber.i("NavHostContainer::setPadding Not set")
-                        return@setOnApplyWindowInsetsListener insets
-                    }
-
-                    showBottomNav()
-
-                    val navigationBarHeight = resources.getNavigationBarHeight()
-                    var paddingBottom = findViewById<ViewGroup>(R.id.bottom_nav).height
-                    Timber.i("NavHostContainer::setPadding(${v.paddingLeft}, ${v.paddingTop}, ${v.paddingRight}, ${paddingBottom + navigationBarHeight}) - paddingBottom(${paddingBottom}), navigationBarHeight(${navigationBarHeight}")
-                    navHostContainer?.setPadding(
-                        v.paddingLeft,
-                        v.paddingTop,
-                        v.paddingRight,
-                        paddingBottom + navigationBarHeight
-                    )
-                }
-                return@setOnApplyWindowInsetsListener insets
-            }
-        }
     }
 
     private fun setupNavHost() {
@@ -134,6 +84,20 @@ class NavActivity : BaseAppCompatActivity() {
         }
     }
 
+    fun showBottomNav() {
+        Timber.i("showBottomNav()")
+        bottomNavigationView.visibility = View.VISIBLE
+    }
+
+    fun hideBottomNav() {
+        Timber.i("hideBottomNav()")
+        bottomNavigationView.visibility = View.GONE
+    }
+
+    fun isShowingBottomNav(): Boolean {
+        return View.VISIBLE == bottomNavigationView.visibility
+    }
+
     private fun setupOnBackPressedDispatcher() {
         backKeyGuideToast = Toast.makeText(
             this,
@@ -176,45 +140,4 @@ class NavActivity : BaseAppCompatActivity() {
         }
     }
 
-    fun showBottomNav() {
-        Timber.i("showBottomNav()")
-        bottomNavigationView.visibility = View.VISIBLE
-
-//        postDelayed({
-//            val navigationBarHeight = resources.getNavigationBarHeight()
-//            val bottomNavView = findViewById<ViewGroup>(R.id.bottom_nav)
-//            var paddingBottom = 0
-//            if (0 == navigationBarHeight) {
-//                paddingBottom = bottomNavView.height
-//            }
-//
-//            val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
-//            Timber.i("showBottomNav()::setPadding(${navHostContainer.paddingLeft}, ${navHostContainer.paddingTop}, ${navHostContainer.paddingRight}, ${paddingBottom + navigationBarHeight})")
-//            navHostContainer.setPadding(
-//                navHostContainer.paddingLeft,
-//                navHostContainer.paddingTop,
-//                navHostContainer.paddingRight,
-//                paddingBottom + navigationBarHeight
-//            )
-//        }, 100)
-    }
-
-    fun hideBottomNav() {
-        Timber.i("hideBottomNav()")
-        bottomNavigationView.visibility = View.GONE
-
-        //val navigationBarHeight = resources.getNavigationBarHeight()
-        //val navHostContainer = findViewById<ViewGroup>(R.id.nav_host_container)
-        //Timber.i("showBottomNav()::setPadding(${navHostContainer.paddingLeft}, ${navHostContainer.paddingTop}, ${navHostContainer.paddingRight}, ${navigationBarHeight})")
-        //navHostContainer?.setPadding(
-        //    navHostContainer.paddingLeft,
-        //    navHostContainer.paddingTop,
-        //    navHostContainer.paddingRight,
-        //    navigationBarHeight
-        //)
-    }
-
-    fun isShowingBottomNav(): Boolean {
-        return View.VISIBLE == bottomNavigationView.visibility
-    }
 }
