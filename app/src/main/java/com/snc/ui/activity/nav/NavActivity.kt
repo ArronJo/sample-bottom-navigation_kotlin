@@ -36,6 +36,39 @@ class NavActivity : BaseAppCompatActivity() {
 
         if (AppConfig.FEATURE_FULLSCREEN) {
             WindowCompat.setDecorFitsSystemWindows(window, false)
+
+            try {
+                findViewById<ViewGroup>(android.R.id.content).let {
+                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                        Timber.i("NavHostContainer:: rootView - OnApplyWindowInsets")
+                        return@setOnApplyWindowInsetsListener insets
+                    }
+                }
+
+                findViewById<ViewGroup>(R.id.contentLayout)?.let {
+                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                        Timber.i("NavHostContainer:: contentLayout - OnApplyWindowInsets")
+                        return@setOnApplyWindowInsetsListener insets
+                    }
+                }
+
+                findViewById<ViewGroup>(R.id.fitLayout)?.let {
+                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                        Timber.i("NavHostContainer:: fitLayout - OnApplyWindowInsets")
+                        return@setOnApplyWindowInsetsListener insets
+                    }
+                }
+
+                findViewById<ViewGroup>(R.id.nav_host_container)?.let {
+                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                        Timber.i("NavHostContainer:: navHostContainer - OnApplyWindowInsets")
+                        return@setOnApplyWindowInsetsListener insets
+                    }
+                }
+
+            } catch (e: Exception) {
+                Timber.w(e)
+            }
         }
 
         setupNavHost()
@@ -65,14 +98,12 @@ class NavActivity : BaseAppCompatActivity() {
                 R.id.myContractFragment, R.id.findProductFragment, R.id.newsFragment -> {
                     showBottomNav()
                 }
-
                 R.id.fullMenuFragment -> {
                     badge.isVisible = false
                     badge.clearNumber()
 
                     showBottomNav()
                 }
-
                 else -> {
                     hideBottomNav()
                 }
