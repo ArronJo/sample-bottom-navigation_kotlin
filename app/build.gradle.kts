@@ -35,7 +35,9 @@ android {
 
         ndk {
             //noinspection ChromeOsAbiSupport
-            abiFilters.addAll(arrayOf("armeabi", "armeabi-v7a", "arm64-v8a"))
+            abiFilters.add("armeabi")
+            abiFilters.add("armeabi-v7a")
+            abiFilters.add("arm64-v8a")
         }
 
         setProperty("archivesBaseName", "${applicationId}-${versionName}")
@@ -188,6 +190,6 @@ dependencies {
 
     implementation("io.github.muddz:styleabletoast:2.4.0")
 
-    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
+    //releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+    //debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
