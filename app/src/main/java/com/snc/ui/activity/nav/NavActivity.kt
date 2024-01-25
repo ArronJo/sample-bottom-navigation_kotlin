@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.snc.consts.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.base.BaseAppCompatActivity
+import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
 import timber.log.Timber
 
 class NavActivity : BaseAppCompatActivity() {
@@ -27,6 +28,7 @@ class NavActivity : BaseAppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var bottomNavigationView: BottomNavigationView
+    private var navigationBarHeight = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Timber.i("[LifeCycle] NavActivity:: onCreate()")
@@ -38,30 +40,10 @@ class NavActivity : BaseAppCompatActivity() {
             WindowCompat.setDecorFitsSystemWindows(window, false)
 
             try {
-                findViewById<ViewGroup>(android.R.id.content).let {
-                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
-                        Timber.i("NavHostContainer:: rootView - OnApplyWindowInsets")
-                        return@setOnApplyWindowInsetsListener insets
-                    }
-                }
-
                 findViewById<ViewGroup>(R.id.contentLayout)?.let {
                     ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
                         Timber.i("NavHostContainer:: contentLayout - OnApplyWindowInsets")
-                        return@setOnApplyWindowInsetsListener insets
-                    }
-                }
-
-                findViewById<ViewGroup>(R.id.fitLayout)?.let {
-                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
-                        Timber.i("NavHostContainer:: fitLayout - OnApplyWindowInsets")
-                        return@setOnApplyWindowInsetsListener insets
-                    }
-                }
-
-                findViewById<ViewGroup>(R.id.nav_host_container)?.let {
-                    ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
-                        Timber.i("NavHostContainer:: navHostContainer - OnApplyWindowInsets")
+                        navigationBarHeight = insets.getNavigationBarHeight()
                         return@setOnApplyWindowInsetsListener insets
                     }
                 }
@@ -80,7 +62,7 @@ class NavActivity : BaseAppCompatActivity() {
         bottomNavigationView.itemIconTintList = null
 
         val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.nav_host_container
+            R.id.navHostContainer
         ) as NavHostFragment
 
         navController = navHostFragment.navController
@@ -118,11 +100,23 @@ class NavActivity : BaseAppCompatActivity() {
     fun showBottomNav() {
         Timber.i("showBottomNav()")
         bottomNavigationView.visibility = View.VISIBLE
+
+        if (AppConfig.FEATURE_FULLSCREEN) {
+            findViewById<ViewGroup>(R.id.contentLayout)?.let {
+                it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, 0)
+            }
+        }
     }
 
     fun hideBottomNav() {
         Timber.i("hideBottomNav()")
         bottomNavigationView.visibility = View.GONE
+
+        if (AppConfig.FEATURE_FULLSCREEN) {
+            findViewById<ViewGroup>(R.id.contentLayout)?.let {
+                it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, navigationBarHeight)
+            }
+        }
     }
 
     fun isShowingBottomNav(): Boolean {
