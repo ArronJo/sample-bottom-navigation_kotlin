@@ -31,7 +31,6 @@ import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
 import com.snc.utils.extenstions.loadUrlWithHeader
 import com.snc.utils.extenstions.setup
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
-import com.snc.zero.ui.kotlin.extentions.getNavigationBarImeHeight
 import com.snc.zero.ui.kotlin.extentions.getStatusBarHeight
 import com.snc.zero.ui.kotlin.extentions.popup
 import com.snc.zero.ui.kotlin.extentions.setDarkThemeSystemBar
