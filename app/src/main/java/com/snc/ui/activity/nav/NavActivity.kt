@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.snc.consts.AppConfig
+import com.snc.configs.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.base.BaseAppCompatActivity
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight

@@ -20,7 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-import com.snc.consts.AppConfig
+import com.snc.configs.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.nav.bizconst.BizConst
 import com.snc.ui.activity.nav.bizconst.BizConst.Companion.KEY_BIZ_WEB_FRAGMENT

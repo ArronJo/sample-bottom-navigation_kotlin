@@ -1,4 +1,4 @@
-package com.snc.consts
+package com.snc.configs
 
 object AppConfig {
 

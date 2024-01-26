@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.transition.TransitionInflater
-import com.snc.consts.AppConfig
+import com.snc.configs.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.zero.ui.kotlin.extentions.getStatusBarHeight
 import com.snc.zero.ui.kotlin.fragment.base.BaseFragment

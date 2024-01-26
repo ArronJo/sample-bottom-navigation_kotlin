@@ -13,7 +13,7 @@ import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.ProgressBar
-import com.snc.consts.AppConfig
+import com.snc.configs.AppConfig
 import com.snc.ui.activity.webview.chooser.listener.FileChooserListener
 import com.snc.ui.activity.webview.client.BizWebChromeClient
 import com.snc.ui.activity.webview.client.BizWebViewClient

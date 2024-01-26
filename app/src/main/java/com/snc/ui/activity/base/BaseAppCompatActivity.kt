@@ -3,7 +3,7 @@ package com.snc.ui.activity.base
 import android.os.Bundle
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
-import com.snc.consts.AppConfig
+import com.snc.configs.AppConfig
 
 abstract class BaseAppCompatActivity : AppCompatActivity() {
 
