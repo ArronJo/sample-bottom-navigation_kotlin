@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
@@ -14,16 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.snc.configs.AppConfig
 import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.base.BaseAppCompatActivity
+import com.snc.zero.lib.kotlin.backpressed.BackPressedCallbackCompat
+import com.snc.zero.lib.kotlin.backpressed.listener.OnBackPressedCallbackListener
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
 import timber.log.Timber
 
 class NavActivity : BaseAppCompatActivity() {
 
-    companion object {
-        const val TIME_INTERVAL_BACK_KEY_TWICE = 2000L
-    }
-
-    private var backKeyPressedTime = 0L
     private lateinit var backKeyGuideToast: Toast
 
     private lateinit var navController: NavController
@@ -130,36 +126,29 @@ class NavActivity : BaseAppCompatActivity() {
             Toast.LENGTH_SHORT
         )
 
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Timber.i("NavActivity:: onBackPressed : handleOnBackPressed() : isEnabled = $isEnabled")
-                if (isEnabled) {
-                    handleOnBackPressedOnActivity()
-                } else {
-                    onBackPressedDispatcher.onBackPressed()
-                }
+        BackPressedCallbackCompat.addCallback(this, object : OnBackPressedCallbackListener {
+            override fun handleOnBackPressed(twice: Boolean) {
+                Timber.i("NavActivity:: onBackPressed : OnBackPressedCallbackListener()")
+                handleOnBackPressedOnActivity(twice)
             }
         })
+
     }
 
-    private fun handleOnBackPressedOnActivity() {
+    private fun handleOnBackPressedOnActivity(twice: Boolean) {
         when (navController.currentDestination?.id) {
             R.id.findProductFragment,
             R.id.myContractFragment,
             R.id.newsFragment,
             R.id.fullMenuFragment -> {
-                if (System.currentTimeMillis() > backKeyPressedTime + TIME_INTERVAL_BACK_KEY_TWICE) {
-                    backKeyPressedTime = System.currentTimeMillis()
-                    backKeyGuideToast.show()
-                    return
-                }
-                if (System.currentTimeMillis() <= backKeyPressedTime + TIME_INTERVAL_BACK_KEY_TWICE) {
+                if (twice) {
                     backKeyGuideToast.cancel()
                     finish()
+                    return
                 }
+                backKeyGuideToast.show()
             }
-
-            R.id.splashFragment -> {
+            else -> {
                 return
             }
         }
