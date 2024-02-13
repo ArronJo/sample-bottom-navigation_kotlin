@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -15,6 +16,7 @@ import com.snc.sample.bottom_navigation_kotlin.R
 import com.snc.ui.activity.base.BaseAppCompatActivity
 import com.snc.zero.lib.kotlin.backpressed.BackPressedCallbackCompat
 import com.snc.zero.lib.kotlin.backpressed.listener.OnBackPressedCallbackListener
+import com.snc.zero.ui.kotlin.extentions.getImeHeight
 import com.snc.zero.ui.kotlin.extentions.getNavigationBarHeight
 import timber.log.Timber
 
@@ -36,10 +38,19 @@ class NavActivity : BaseAppCompatActivity() {
             WindowCompat.setDecorFitsSystemWindows(window, false)
 
             try {
-                findViewById<ViewGroup>(R.id.contentLayout)?.let {
+                val contentView = findViewById<ViewGroup>(android.R.id.content)?.getChildAt(0)
+                contentView?.let {
                     ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
-                        Timber.i("NavHostContainer:: contentLayout - OnApplyWindowInsets")
+                        Timber.i("NavHostContainer:: android.R.id.content - OnApplyWindowInsets")
                         navigationBarHeight = insets.getNavigationBarHeight()
+
+                        if (insets.getImeHeight() > 0) {
+                            hideBottomNav(insets)
+                        } else {
+                            if (isNavFragment(navController)) {
+                                showBottomNav(insets)
+                            }
+                        }
                         return@setOnApplyWindowInsetsListener insets
                     }
                 }
@@ -51,6 +62,20 @@ class NavActivity : BaseAppCompatActivity() {
 
         setupNavHost()
         setupOnBackPressedDispatcher()
+    }
+
+    private fun isNavFragment(navController: NavController): Boolean {
+        val dest = navController.currentDestination
+        dest?.let {
+            if (R.id.myContractFragment == it.id
+                || R.id.findProductFragment == it.id
+                || R.id.newsFragment == it.id
+                || R.id.fullMenuFragment == it.id
+            ) {
+                return true
+            }
+        }
+        return false
     }
 
     private fun setupNavHost() {
@@ -76,12 +101,14 @@ class NavActivity : BaseAppCompatActivity() {
                 R.id.myContractFragment, R.id.findProductFragment, R.id.newsFragment -> {
                     showBottomNav()
                 }
+
                 R.id.fullMenuFragment -> {
                     badge.isVisible = false
                     badge.clearNumber()
 
                     showBottomNav()
                 }
+
                 else -> {
                     hideBottomNav()
                 }
@@ -93,24 +120,30 @@ class NavActivity : BaseAppCompatActivity() {
         }
     }
 
-    fun showBottomNav() {
+    fun showBottomNav(insets: WindowInsetsCompat? = null) {
         Timber.i("showBottomNav()")
         bottomNavigationView.visibility = View.VISIBLE
 
         if (AppConfig.FEATURE_FULLSCREEN) {
             findViewById<ViewGroup>(R.id.contentLayout)?.let {
-                it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, 0)
+                if (null == insets || insets.getImeHeight() <= 0) {
+                    Timber.i("showBottomNav::setPadding + Normal(${it.paddingLeft}, ${it.paddingTop}, ${it.paddingRight}, ${navigationBarHeight})")
+                    it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, 0)
+                }
             }
         }
     }
 
-    fun hideBottomNav() {
+    fun hideBottomNav(insets: WindowInsetsCompat? = null) {
         Timber.i("hideBottomNav()")
         bottomNavigationView.visibility = View.GONE
 
         if (AppConfig.FEATURE_FULLSCREEN) {
             findViewById<ViewGroup>(R.id.contentLayout)?.let {
-                it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, navigationBarHeight)
+                if (null == insets || insets.getImeHeight() <= 0) {
+                    Timber.i("hideBottomNav::setPadding + Normal($insets, ${it.paddingLeft}, ${it.paddingTop}, ${it.paddingRight}, ${navigationBarHeight})")
+                    it.setPadding(it.paddingLeft, it.paddingTop, it.paddingRight, navigationBarHeight)
+                }
             }
         }
     }
@@ -129,28 +162,20 @@ class NavActivity : BaseAppCompatActivity() {
         BackPressedCallbackCompat.addCallback(this, object : OnBackPressedCallbackListener {
             override fun handleOnBackPressed(twice: Boolean) {
                 Timber.i("NavActivity:: onBackPressed : OnBackPressedCallbackListener()")
-                handleOnBackPressedOnActivity(twice)
+                handleOnBackPressedOnActivity(navController, twice)
             }
         })
 
     }
 
-    private fun handleOnBackPressedOnActivity(twice: Boolean) {
-        when (navController.currentDestination?.id) {
-            R.id.findProductFragment,
-            R.id.myContractFragment,
-            R.id.newsFragment,
-            R.id.fullMenuFragment -> {
-                if (twice) {
-                    backKeyGuideToast.cancel()
-                    finish()
-                    return
-                }
-                backKeyGuideToast.show()
-            }
-            else -> {
+    private fun handleOnBackPressedOnActivity(navController: NavController, twice: Boolean) {
+        if (isNavFragment(navController)) {
+            if (twice) {
+                backKeyGuideToast.cancel()
+                finish()
                 return
             }
+            backKeyGuideToast.show()
         }
     }
 

@@ -1,6 +1,6 @@
 [versions]
-plugin-agp = "8.2.1"
-plugin-library = "8.2.1"
+plugin-agp = "8.2.2"
+plugin-library = "8.2.2"
 plugin-kotlin = "1.9.0"
 plugin-detekt = "1.19.0"
 

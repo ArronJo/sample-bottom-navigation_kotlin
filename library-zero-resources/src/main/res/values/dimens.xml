@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="titlebar_height">48dp</dimen>
+    <dimen name="navigation_height">72dp</dimen>
 
     <dimen name="progress_corners_radius_large">100dp</dimen>
 

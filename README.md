@@ -6,6 +6,9 @@ This project is a sample for developing android application using bottom-navigat
 # Release Note
 | Version | Rev      | Date       | Comment                                                     |
 |---------|----------|------------|-------------------------------------------------------------|
+| 1.1.13  | 10010013 | 2024-02-13 | fix: fullscreen 대응                                          |
+| 1.1.12  | 10010012 | 2024-01-26 | feat: OnBackPressed 클래스 만들기                                 |
+| 1.1.11  | 10010011 | 2024-01-26 | chore: migration to the toml.                               |
 | 1.1.10  | 10010010 | 2024-01-24 | fix: 이것저것 많이 고침....                                         |
 | 1.1.9   | 10010009 | 2023-10-17 | fix: build.gradle: groovy -> kotlin                         |
 | 1.1.8   | 10010008 | 2023-10-16 | fix: build.gradle: groovy -> kotlin 이슈가 있어서 일단 원복           |
